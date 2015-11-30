@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE student SYSTEM "Test03.dtd">
+<!--
+	<student>ok</student> <== 값 주면 오류!
+-->
+
+<!-- 값을 줄 필요가 없기 떄문에 끝 태그 생략 가능! -->
+<student/>

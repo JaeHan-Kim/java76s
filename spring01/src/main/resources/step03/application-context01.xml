@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- 프로퍼티 값 설정하기 -->
+	<bean id="c1" class="step03.Computer">
+		<!-- c1.setModel("개발용1호") --> 
+		<property name="model">
+			<value type ="java.lang.String">개발용1호</value>
+		</property>
+		
+		<property name="maker"><value>비트컴퓨터</value></property>
+		<property name="ram"><value>4</value></property>
+		<property name="speed"><value>3.2</value></property>
+	</bean>
+	<bean id="c2" class="step03.Computer">
+		<!-- c1.setModel("개발용1호") --> 
+		<property name="model" value="개발용2호" />
+		<property name="maker" value ="비트컴퓨터" />
+		<property name="ram" value ="2" />
+		<property name="speed" value ="2.2" />
+	</bean>
+</beans>

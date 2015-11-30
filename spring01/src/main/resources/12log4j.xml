@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<root>
+		<level value="TRACE" />
+		<appender-ref ref="stdout" />
+	</root>
+<!-- console -->
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%5p[%t] %c- %m %n" />
+		</layout>
+	</appender>
+<!-- log level	-->
+	<category name="step11.B"> 
+		<level value="INFO" /> 
+	</category> 
+	<logger name="step11.sub"> 
+		<level value="INFO" /> 
+	</logger> 
+</log4j:configuration>

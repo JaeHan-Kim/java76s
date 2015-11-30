@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 4) 자식 엘리먼트 선언 순서 
+ 	=> 개수를 지정하지 않으면 필수
+ 	=> ? : 0 또는 1
+ 	=> * : 0 이상
+  => + : 1 이상
+ -->
+<!ELEMENT student (name,age?,tel+,address*)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT tel (#PCDATA)>
+<!ELEMENT address (#PCDATA)>

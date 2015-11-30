@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE student SYSTEM "Test06.dtd">
+<!-- 정상적인 예제 -->
+<!--
+<student>
+	<name></name>
+	<tel></tel>
+</student>
+-->
+ <student>
+	<name></name>
+	<tel></tel>
+	<mobile></mobile>
+	<email></email>
+</student>
+

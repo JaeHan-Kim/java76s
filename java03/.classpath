@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" exported="true"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="src" path="src/test/resources"/>
+	<classpathentry sourcepath="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.37/22f936ab4c7cec20a7d8fe044a249075894ba316/mysql-connector-java-5.1.37-sources.jar" kind="lib" path="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.37/2c378637f6faff77541244e8257b446f04324bd8/mysql-connector-java-5.1.37.jar" exported="true"/>
+	<classpathentry sourcepath="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/org.mariadb.jdbc/mariadb-java-client/1.2.3/37eb0da9cae6360ca82118064bcbdcffc894cfb0/mariadb-java-client-1.2.3-sources.jar" kind="lib" path="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/org.mariadb.jdbc/mariadb-java-client/1.2.3/4d0f16d7a27b505e845d497d9d7251015d9a8a27/mariadb-java-client-1.2.3.jar" exported="true"/>
+	<classpathentry sourcepath="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/postgresql/postgresql/9.1-901-1.jdbc4/8e9d82a070f2b4d9e8561a567bf4daca36eed4e2/postgresql-9.1-901-1.jdbc4-sources.jar" kind="lib" path="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/postgresql/postgresql/9.1-901-1.jdbc4/9bfabe48876ec38f6cbaa6931bad05c64a9ea942/postgresql-9.1-901-1.jdbc4.jar" exported="true"/>
+	<classpathentry sourcepath="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/3.3.0/59cc8ae8bfb9b187eb0e8aa17362a2b34e713104/jna-3.3.0-sources.jar" kind="lib" path="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/3.3.0/9928b4df8863584ff12716ebad7a7e88996dbe4b/jna-3.3.0.jar" exported="true"/>
+	<classpathentry sourcepath="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/3.3.0/59cc8ae8bfb9b187eb0e8aa17362a2b34e713104/jna-3.3.0-sources.jar" kind="lib" path="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/3.3.0/b06392fc419fca6276ab55ee18a26b1ec400d5e8/jna-3.3.0-platform.jar" exported="true"/>
+</classpath>

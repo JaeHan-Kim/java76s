@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE students SYSTEM "Test04.dtd">
+
+<students>
+	<student name="홍길동" gender="man" email="hong" />
+	<student name="홍길동" gender="man" email="hong2" />
+</students>
