@@ -24,6 +24,7 @@ public class Servlet10 extends HttpServlet{
     HttpSession session = request.getSession();
     response.setContentType("text/plain;charset=UTF-8");
     PrintWriter out = response.getWriter();
+    out.println("가가나");
     out.println("세션과 쿠키");
     
   }
