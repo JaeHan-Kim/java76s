@@ -54,9 +54,9 @@ public class MembersController {
 	}
 	
 	@RequestMapping(value="add", method=RequestMethod.POST)
-	public String add(Members student, MultipartFile photofile) throws Exception {
+	public String add(Members members, MultipartFile photofile) throws Exception {
 
-		if (photofile.getSize() > 0) {
+		/*if (photofile.getSize() > 0) {
 			String newFileName = MultipartHelper.generateFilename(photofile.getOriginalFilename()); // 파일 이름 
 			File attachfile = new File(
 					servletContext.getRealPath(SAVED_DIR) 
@@ -65,12 +65,15 @@ public class MembersController {
 			makeThumbnailImage(
 					servletContext.getRealPath(SAVED_DIR) + "/" + newFileName,
 					servletContext.getRealPath(SAVED_DIR) +"/s-"+newFileName + ".png");
-			student.setPhoto(newFileName);
+			members.setPhoto(newFileName);
 		}
+		*/
 	
-		membersDao.insert(student);
+		membersDao.insert(members);
+	  
+	  System.out.println(members.toString());
 
-		return "redirect:list.do";
+		return "redirect:../auth/login.do";
 	}
 
 	@RequestMapping("detail")
@@ -125,6 +128,11 @@ public class MembersController {
 		}
 		return "redirect:list.do";
 	}
+	
+	@RequestMapping(value="join", method=RequestMethod.GET)
+  public String joinform() {
+    return "/members/JoinForm";
+  }
 	
   private void makeThumbnailImage(String originPath, String thumbPath) 
       throws IOException {

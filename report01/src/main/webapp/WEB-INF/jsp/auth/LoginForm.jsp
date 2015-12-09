@@ -33,10 +33,16 @@
       <input type="password" name="password" class="form-control" placeholder="Enter password">
     </div>
     <button type="submit" class="btn btn-success" class="btn btn-primary btn-md">로그인</button>
-    <a href="../JoinForm.jsp" class="btn btn-info" class="btn btn-primary btn-md" role="button">회원가입</a>
-    <a href="help@test.com" class="btn btn-danger">
-    <span class="glyphicon glyphicon-envelope"></span> Email 문의
-    </a>
+
+    <a href="join.do" class="btn btn-info" class="btn btn-primary btn-md" role="button">회원가입</a>
+
+    <!-- <input type="button" class="btn btn-info" class="btn btn-primary btn-md" value="회원가입" 
+    onclick = "window.location='join.do'"> -->
+    
+    <a href="#demo" class="btn btn-danger" data-toggle="collapse">Email 문의</a>
+  	<div id="demo" class="collapse">
+    report@test.com 으로 문의 바랍니다.
+  	</div>
     <input type="checkbox" name="saveEmail" 
     ${(empty cookie.email) ? "":"checked"}>email 저장하기(개인컴퓨터 일 경우 체크하세요)<br>
   </form>

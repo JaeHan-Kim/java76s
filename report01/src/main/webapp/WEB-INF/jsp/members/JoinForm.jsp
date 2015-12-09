@@ -27,24 +27,24 @@
 </div>
 
 <div class="container">
-  <form role="form">
+  <form role="form" action="add.do" enctype="multipart/form-data" method="post">
     <div class="form-group">
       <label for="inputdefault">이름 :</label>
-      <input class="form-control" id="inputdefault" type="text" placeholder="이름을 입력하세요.">
+      <input class="form-control" id="inputdefault" type="text" name="name" placeholder="이름을 입력하세요.">
     </div>
     <div class="form-group">
       <label for="inputdefault">Email :</label>
-      <input class="form-control" id="inputdefault" type="text" placeholder="Example@TodoList.com">
+      <input class="form-control" id="inputdefault" type="text" name="email" placeholder="Example@TodoList.com">
     </div>
     <div class="form-group">
       <label for="inputdefault">Password :</label>
-      <input class="form-control" id="inputdefault" type="text" placeholder="영어 숫자 혼합 6자리 이상입니다.">
+      <input class="form-control" id="inputdefault" type="password" name="password" placeholder="영어 숫자 혼합 6자리 이상입니다.">
     </div>
-    <div class="form-group">
+   <!--  <div class="form-group">
       <label for="inputdefault">Password 확인 :</label>
-      <input class="form-control" id="inputdefault" type="text" placeholder="위의 비밀번호를 다시 입력하세요.">
-    </div>
-    <a href="/student/add.do" class="btn btn-danger" class="btn btn-primary btn-md" role="button">가입하기</a>
+      <input class="form-control" id="inputdefault" type="password" name="password1" placeholder="위의 비밀번호를 다시 입력하세요.">
+    </div> -->
+    <input type="submit" class="btn btn-danger" class="btn btn-primary btn-md" value="가입하기">
   </form>
 </div>
 

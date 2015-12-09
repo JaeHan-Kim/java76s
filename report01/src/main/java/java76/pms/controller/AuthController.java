@@ -3,7 +3,6 @@ package java76.pms.controller;
 import java.util.HashMap;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -56,7 +55,12 @@ public class AuthController {
    session.setAttribute("loginUser", member);
 		return "redirect:../plans/list.do";
 	}
-  
+
+  @RequestMapping(value="join", method=RequestMethod.GET)
+  public String joinform() {
+    return "redirect:../members/join.do";
+  }
+ 
   @RequestMapping("logout")
 	public String logout(HttpSession session) {
   	
