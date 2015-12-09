@@ -33,15 +33,12 @@
 		<div class="row">
 
 			<c:forEach var="plan" items="${plans}">
-
-				<!--  <img src='../file/s-${(empty student.pic)?"default":student.pic}.png'>
- -->
+				<!--  <img src='../file/s-${(empty student.pic)?"default":student.pic}.png'> -->
 				<div class="col-sm-3">
-					<p>
-						<a href='detail.do?no=${plan.no}'>${plan.plan_title}</a>
+					<p>${plan.plan_title}
+					<a href='detail.do?no=${plan.no}'><img src="../attachFile/image.jpeg" width="150" height="80"
+						class="img-responsive" style="width: 100%" alt="Image"></a>
 					</p>
-					<img src="../attachFile/image.jpeg" width="150" height="80"
-						class="img-responsive" style="width: 100%" alt="Image">
 				</div>
 			</c:forEach>
 

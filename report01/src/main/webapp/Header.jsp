@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 
-
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -12,14 +11,14 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">${loginUser.name}</a>
+			<a class="navbar-brand" href="#">${loginUser.name}님</a>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Gallery</a></li>
-				<li><a href="#">Contact</a></li>
+				<li class="active"><a href="list.do">Home</a></li>
+				<li><a href="add.do">new Todo List</a></li>
+				<!-- <li><a href="#">Gallery</a></li>
+				<li><a href="#">Contact</a></li> -->
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><c:if test="${not empty loginUser}">

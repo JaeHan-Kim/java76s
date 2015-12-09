@@ -1,57 +1,49 @@
-<%-- 게시물 상세정보 및 변경 폼 --%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset='UTF-8'>
-<title>게시판 - 상세정보</title>
-<link rel="stylesheet" type="text/css" href="../css/common.css">
+<title>일정 - 상세 정보</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/css1.css" />
 </head>
 <body>
 	<jsp:include page="/Header.jsp" />
-	<h1>게시물 정보 (with JSP + EL + JSTL)</h1>
-
-	<c:if test="${not empty board}">
+	<div class="jumbotron">
+  <div class="container text-center">
+	<h1>일정 - 상세 정보</h1>
+	<c:if test="${not empty plan}">
 		<form id='form1' action='update.do' method='post' enctype="multipart/form-data">
 			<table border='1'>
 				<tr>
-					<th>번호</th>
-					<td><input type='text' value='${plans.no}' name='no' readonly></td>
-				</tr>
-				<tr>
 					<th>제목</th>
-					<td><input type='text' value='${plans.title}' name='title'></td>
+					<td><input type='text' value='${plan.plan_title}' name='plan_title'></td>
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td><textarea rows='10' cols='60' name='content'>${plans.content}</textarea></td>
-				</tr>
-				<tr>
-					<th>조회수</th>
-					<td>${plans.views}</td>
-				</tr>
-				<tr>
-					<th>등록일</th>
-					<td>${plans.createdDate}</td>
+					<td><textarea rows='10' cols='60' name='content'>${plan.plan_content}</textarea></td>
 				</tr>
 				<tr>
 				<th>Picture</th>
-					<td><a href='../attachFile/${plans.attachFile}'>${plans.attachFile}</a><br>
+					<td><a href='../attachFile/${plan.attachFile}'>${plan.attachFile}</a><br>
       		<input type='file' name='file'>
-      		<input type='hidden' name='attachFile' value='${plans.attachFile}'></td>
-				</tr>
-				<tr>
-					<th>비밀번호</th>
-					<td><input id='inputPassword' type='password' name='password'></td>
+      		<input type='hidden' name='attachFile' value='${plan.attachFile}'></td>
 				</tr>
 			</table>
 
 			<p>
 				<button name="update" type="submit" class='button1'>변경</button>
-				<a id='aDelete' href='delete.do?no=${plans.no}' class='button2' onclick='deleteBoard()'>삭제</a>
+				<a id='aDelete' href='delete.do?pno=${plan.pno}' class='button2' onclick='deleteBoard()'>삭제</a>
 			</p>
 		</form>
 		<script>
@@ -68,10 +60,13 @@
 			}
 		</script>
 	</c:if>
-	<c:if test="${empty board}">
+	<c:if test="${empty plan}">
 		<p>해당 번호의 게시물을 찾을 수 없습니다.</p>
 	</c:if>
-
+  </div>
+</div>
+<footer class="container-fluid text-center">
 	<jsp:include page="/Copyright.jsp" />
+</footer>
 </body>
 </html>

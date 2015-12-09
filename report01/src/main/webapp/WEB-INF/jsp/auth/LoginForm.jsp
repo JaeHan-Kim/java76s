@@ -61,28 +61,28 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="../file/Todoist1.jpg" alt="Todo List">
+      <img src="../dpimg/Todoist1.jpg" alt="Todo List">
       <div class="carousel-caption">
         <h3>Todo List</h3>
       </div>
     </div>
 
     <div class="item">
-      <img src="../file/Todoist2.jpg" alt="지금 가입하세요.">
+      <img src="../dpimg/Todoist2.jpg" alt="지금 가입하세요.">
       <div class="carousel-caption">
         <h3>지금 가입하세요.</h3>
       </div>
     </div>
 
     <div class="item">
-      <img src="../file/Todoist3.jpg" alt="효율적인 일상">
+      <img src="../dpimg/Todoist3.jpg" alt="효율적인 일상">
       <div class="carousel-caption">
         <h3>효율적인 일상</h3>
       </div>
     </div>
 
     <div class="item">
-      <img src="../file/Todoist4.jpg" alt="Todo List">
+      <img src="../dpimg/Todoist4.jpg" alt="Todo List">
     </div>
   </div>
 
