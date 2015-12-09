@@ -12,6 +12,7 @@
 <head>
 <meta charset='UTF-8'>
 <title>게시판-목록</title>
+<link rel="stylesheet" type="text/css" href="../css/css1.css"/>
 </head>
 <body>
 
