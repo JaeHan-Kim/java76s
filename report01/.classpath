@@ -55,6 +55,11 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
+	<classpathentry sourcepath="/Users/sinji_yjy/.gradle/caches/modules-2/files-2.1/org.webjars/bootstrap/3.3.6/1d8f0e445f274089b2983e2014b0fb4cf8b27501/bootstrap-3.3.6-sources.jar" kind="lib" path="/Users/sinji_yjy/.gradle/caches/modules-2/files-2.1/org.webjars/bootstrap/3.3.6/1360e2bcd3016ce44a273d2a3b6569963bb0bd68/bootstrap-3.3.6.jar" exported="true">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
 	<classpathentry sourcepath="/Users/sinji_yjy/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/ab3976d4574c48d22dc1abf6a9e8bd0fdf928223/javax.servlet-api-3.1.0-sources.jar" kind="lib" path="/Users/sinji_yjy/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/3cd63d075497751784b2fa84be59432f4905bf7c/javax.servlet-api-3.1.0.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
@@ -111,6 +116,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry sourcepath="/Users/sinji_yjy/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.2.3.RELEASE/1604486372a34b5dec0d21bfa5c94e855413f71c/spring-web-4.2.3.RELEASE-sources.jar" kind="lib" path="/Users/sinji_yjy/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.2.3.RELEASE/98eea3fbe01450fff18aeb7e6003f80a879a049e/spring-web-4.2.3.RELEASE.jar" exported="true">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sinji_yjy/.gradle/caches/modules-2/files-2.1/org.webjars/jquery/1.11.1/7ec1bd12b61dc58ee599ff925ac4141f19b94cbc/jquery-1.11.1-sources.jar" kind="lib" path="/Users/sinji_yjy/.gradle/caches/modules-2/files-2.1/org.webjars/jquery/1.11.1/195eda53ac8beba7bff08f9919b48c954c858590/jquery-1.11.1.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
