@@ -5,12 +5,12 @@
 
 <html>
 <head>
-<title>학생 - 상세정보</title>
+<title>회원 관리</title>
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 </head>
 <body>
 <jsp:include page="/Header.jsp"/>
-<h1> 학생 정보 </h1>
+<h1> 회원 정보 </h1>
 <c:if test="${not empty student}">
 <form id ='form1' action='update.do' method="post" enctype="multipart/form-data">
 <table border="1">

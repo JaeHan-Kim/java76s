@@ -78,8 +78,8 @@ public class MembersController {
 			String email,
 			HttpServletRequest request) throws Exception {
 
-		Members student = membersDao.selectOne(email);
-		request.setAttribute("student", student);
+		Members members = membersDao.selectOne(email);
+		request.setAttribute("members", members);
 
 		return "members/MembersDetail";
 
