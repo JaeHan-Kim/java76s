@@ -1,40 +1,57 @@
 <%-- EL을 이용하여 게시물 데이터 출력하기 --%>
 <%@page import="java76.pms.domain.Plans"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" 
-		contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    trimDirectiveWhitespaces="true"
-    %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset='UTF-8'>
-<title>게시판-목록</title>
-<link rel="stylesheet" type="text/css" href="../css/css1.css"/>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/css1.css" />
 </head>
 <body>
-
 <jsp:include page="/Header.jsp"/>
-<h1>게시판(With JSP + EL + JSTL)</h1>
-<a href='add.do'>새 글</a><br>
-<%-- <a href='form.html'>새 글</a><br>--%>
-<table border='1'>
-<tr>
-  <th>계획 </th>
-  <th>D-?</th>
-  <th>D-day</th>
-</tr>
-  <c:forEach var="plan" items="${plans}">
- <tr>
-   <td>${plan.no}</td> 
-   <td><a href='detail.do?no=${plan.no}'>${plan.plan_title}</a></td> 
-   <td>${plan.d_day}</td> 
- </tr>
- </c:forEach>
-</table>
-	<jsp:include page="/Copyright.jsp"/>
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>My Portfolio</h1>
+			<p>Some text that represents "Me"...</p>
+		</div>
+	</div>
+
+	<div class="container-fluid bg-3 text-center">
+		<h3>Some of my Work</h3>
+		<br>
+		<div class="row">
+
+			<c:forEach var="plan" items="${plans}">
+
+				<!--  <img src='../file/s-${(empty student.pic)?"default":student.pic}.png'>
+ -->
+				<div class="col-sm-3">
+					<p>
+						<a href='detail.do?no=${plan.no}'>${plan.plan_title}</a>
+					</p>
+					<img src="../attachFile/image.jpeg" width="150" height="80"
+						class="img-responsive" style="width: 100%" alt="Image">
+				</div>
+			</c:forEach>
+
+		</div>
+	</div>
+	<br>
+
+	<footer class="container-fluid text-center">
+		<jsp:include page="/Copyright.jsp" />
+	</footer>
+
 </body>
 </html>
-    
