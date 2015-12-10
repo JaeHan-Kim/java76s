@@ -1,0 +1,57 @@
+@charset "utf-8";
+#main_top{
+	padding-top : 20px;
+}
+#main_bottom{
+	padding-top : 20px;
+}
+#main_content{
+	height:900px;
+	background: url(../img/flower.jpg) no-repeat center;
+}
+#main_box{
+	border : 2px solid Black;
+	width : 200px;
+	height: 100px;
+	position : fixed;
+	top : 350px;
+	left : 850px;	
+} 
+#main_text1{
+	font-size : 20px;
+	color : Black;
+	text-align: center;
+	padding-top: 15px
+}
+#main_text2{
+	font-size : 18px;
+	color : Blacks;
+	text-align : right;
+	padding-right : 20px;
+	padding-top : 130px;
+}
+
+#main_banner{
+	background-color:White;
+	height: 160px;
+	
+}
+#main_banner_box{
+	
+	border : 2px solid Black;
+	width : 60px;
+	height : 40px;
+	top : 120px;
+}
+#main_text{
+	font-size : 20px;
+	color : Black;
+	padding-top: 15px
+}
+#main_login_text{
+	font-size : 20px;
+	color : Black;
+	text-align : right;
+	padding-down: 15px
+	
+}

@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java76.pms.dao.PlansDao;
-import java76.pms.domain.Members;
-import java76.pms.domain.Plans;
+import java76.pms.domain.Users;
+import java76.pms.domain.Contents;
 import java76.pms.util.MultipartHelper;
 
 
@@ -39,7 +39,7 @@ public class PlansController {
 			@RequestParam(defaultValue = "desc")String align,
 				HttpServletRequest request) throws Exception {
 
-		Members member = (Members)session.getAttribute("loginUser");
+		Users member = (Users)session.getAttribute("loginUser");
 		HashMap<String, Object> paramMap = new HashMap<>();
     paramMap.put("startIndex", (pageNo - 1) * pageSize);
     paramMap.put("length", pageSize);
@@ -47,7 +47,7 @@ public class PlansController {
     paramMap.put("align", align);
     paramMap.put("no", member.getNo());
     
-		List<Plans> plans = plansDao.selectList(paramMap);
+		List<Contents> plans = plansDao.selectList(paramMap);
 
 		request.setAttribute("plans", plans);
 		
@@ -61,7 +61,7 @@ public class PlansController {
 	
 	@RequestMapping(value="add", method=RequestMethod.POST)
 	public String add(HttpSession session,
-			Plans plans, MultipartFile file) throws Exception {
+			Contents plans, MultipartFile file) throws Exception {
 		
 		if (file.getSize() >0) {
 			String newFilename = MultipartHelper.generateFilename(file.getOriginalFilename()); // 파일 이름 
@@ -70,7 +70,7 @@ public class PlansController {
 			file.transferTo(newFile);
 			plans.setAttachFile(newFilename);
 		}
-		Members member = (Members)session.getAttribute("loginUser");
+		Users member = (Users)session.getAttribute("loginUser");
 		plans.setNo(member.getNo());
 		System.out.println(member.getNo());
 		plansDao.insert(plans);
@@ -81,14 +81,14 @@ public class PlansController {
 	@RequestMapping("detail")
 	public String detail(int no, Model model) throws Exception {
 
-		Plans plans = plansDao.selectOne(no);
+		Contents plans = plansDao.selectOne(no);
 		model.addAttribute("plan", plans);    
 		return "plans/PlansDetail";
 	}
 
 	@RequestMapping(value="update", method=RequestMethod.POST)
 	public String update(
-			Plans plans,
+			Contents plans,
 			MultipartFile file, 
 			Model model) throws Exception { 
 		

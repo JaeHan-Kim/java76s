@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+
+body {
+	width : 3300px;
+	height : 1600px;
+	
+	background-image: url('../images/bg3.jpg');
+	background-repeat: no-repeat;
+	background-size : contain;
+}
+
+#layer_fixed
+        {
+            height:130px;
+            width:100%;
+            color: #0ddbf7;
+            font-family:cursive;
+            font-size:70px;
+            font-align:center;
+            position:fixed;
+            z-index:999;
+            top:0px;
+            left:0px;
+            -webkit-box-shadow: 0 1px 2px 0 #777;
+            box-shadow: 0 1px 2px 0 #777;
+            background-color:#FFF;
+        }
+right {
+    position: absolute;
+    left : 1024px;
+    right: 120px;
+    width: 300px;
+    border:3px solid #73AD21;
+    padding: 10px;
+}

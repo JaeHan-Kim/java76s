@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+
+.header {
+	text-align: right;
+	font-family: cursive;
+	background-color: #b0ebee;
+	font-weight: bold;
+}

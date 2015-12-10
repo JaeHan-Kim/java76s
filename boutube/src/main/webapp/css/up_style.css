@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+#main_banner{
+	background-color:White;
+	height: 160px;
+	
+}
+#main_banner_box{
+	
+	border : 2px solid Black;
+	width : 60px;
+	height : 40px;
+	top : 120px;
+}
+#main_text{
+	font-size : 20px;
+	color : Black;
+	padding-top: 15px
+}
+#main_login_text{
+	font-size : 20px;
+	color : Black;
+	text-align : right;
+	padding-down: 15px
+	
+}

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java76.pms.dao.MembersDao;
-import java76.pms.domain.Members;
+import java76.pms.domain.Users;
 
 @Controller
 @RequestMapping("/auth/*")
@@ -46,7 +46,7 @@ public class AuthController {
     paramMap.put("email", email);
     paramMap.put("password", password);
     
-    Members member = membersDao.login(paramMap);
+    Users member = membersDao.login(paramMap);
     
     if (member == null) { // 로그인 실패!
       session.invalidate(); // 세션을 무효화시킴. => 새로 세션 객체 생성!

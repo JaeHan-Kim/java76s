@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java76.pms.dao.MembersDao;
-import java76.pms.domain.Members;
+import java76.pms.domain.Users;
 import java76.pms.util.MultipartHelper;
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -42,7 +42,7 @@ public class MembersController {
     paramMap.put("keyword", keyword);
     paramMap.put("align", align);
     
-		List<Members> members = membersDao.selectList(paramMap);
+		List<Users> members = membersDao.selectList(paramMap);
 
 		request.setAttribute("members", members);
 		return "members/MembersList";
@@ -54,7 +54,7 @@ public class MembersController {
 	}
 	
 	@RequestMapping(value="add", method=RequestMethod.POST)
-	public String add(Members members, MultipartFile photofile) throws Exception {
+	public String add(Users members, MultipartFile photofile) throws Exception {
 
 		/*if (photofile.getSize() > 0) {
 			String newFileName = MultipartHelper.generateFilename(photofile.getOriginalFilename()); // 파일 이름 
@@ -81,7 +81,7 @@ public class MembersController {
 			String email,
 			HttpServletRequest request) throws Exception {
 
-		Members members = membersDao.selectOne(email);
+		Users members = membersDao.selectOne(email);
 		request.setAttribute("members", members);
 
 		return "members/MembersDetail";
@@ -89,7 +89,7 @@ public class MembersController {
 	}
 	@RequestMapping("update")
 	public String update(
-			Members student,
+			Users student,
 			MultipartFile photofile,
 			String photo,
 			HttpServletRequest request) throws Exception {

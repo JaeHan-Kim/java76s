@@ -3,21 +3,21 @@ package java76.pms.dao;
 import java.util.List;
 import java.util.Map;
 
-import java76.pms.domain.Members;
+import java76.pms.domain.Users;
 
 public interface MembersDao {
 
-  public List<Members> selectList(Map<String, Object> paramMap);
+  public List<Users> selectList(Map<String, Object> paramMap);
  
-  public int insert(Members members);
+  public int insert(Users members);
 
   public int delete(String email);
   
-  public int update(Members members);
+  public int update(Users members);
  
-  public Members selectOne(String email);
+  public Users selectOne(String email);
 
-  public Members createToDoList(String email);
+  public Users createToDoList(String email);
 
-  public Members login(Map<String, Object> paramMap);
+  public Users login(Map<String, Object> paramMap);
 }
