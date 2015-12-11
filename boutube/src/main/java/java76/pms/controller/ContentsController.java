@@ -61,19 +61,19 @@ public class ContentsController {
 	
 	@RequestMapping(value="add", method=RequestMethod.POST)
 	public String add(HttpSession session,
-			Contents plans, MultipartFile file) throws Exception {
-		
-		if (file.getSize() >0) {
-			String newFilename = MultipartHelper.generateFilename(file.getOriginalFilename()); // 파일 이름 
-			File newFile = new File( servletContext.getRealPath(SAVED_DIR) 
+			Contents contents, MultipartFile video) throws Exception {
+		System.out.println("캬캬캬");
+		/*
+		if (video.getSize() >0) {
+			String newFilename = MultipartHelper.generateFilename(video.getOriginalFilename()); // 파일 이름 
+			File newFile = new File(servletContext.getRealPath(SAVED_DIR) 
 					+ "/" + newFilename);
-			file.transferTo(newFile);
-			plans.setVideo(newFilename);
+			video.transferTo(newFile);
+			contents.setVideo(newFilename);
 		}
 		Users user = (Users)session.getAttribute("loginUser");
-		plans.setContents_uno(user.getUno());
-		// System.out.println(member.getUno());
-		contentsDao.insert(plans);
+		contents.setContents_uno(user.getUno());*/
+//		contentsDao.insert(contents);
 
 		return "redirect:list.do";
 	}

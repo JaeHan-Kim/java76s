@@ -20,7 +20,7 @@
   <bean id="multipartResolver"
         class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 
-    <property name="maxUploadSize" value="10000000"/>
+    <property name="maxUploadSize" value="1000000000000"/>
 	</bean>
 	<!-- 기존의 뷰 리졸버(view resolver; 뷰 컴포넌트를 실행시키는 객체)를 대체 한다. 
   		=> 프론트 컨트롤러는 페이지 컨트롤러가 리턴한 뷰 이름을 다음 객체에게 전달한다.

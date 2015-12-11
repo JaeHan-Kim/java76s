@@ -6,6 +6,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ import java76.pms.domain.Users;
 @RequestMapping("/auth/*")
 public class AuthController {
 	@Autowired UsersDao usersDao;
-	
+	private static final Logger log = Logger.getLogger(AuthController.class);
 	@RequestMapping(value="login", method=RequestMethod.GET)
 	public String loginform() {
 		return "auth/LoginForm";
@@ -33,6 +34,8 @@ public class AuthController {
 			HttpServletResponse response,
 			HttpSession session) {
   	
+  	System.out.println(email);
+  	System.out.println(password);
     Cookie emailCookie = null;
     if (saveEmail != null) { // 이메일 저장을 체크했으면,
       emailCookie = new Cookie("email", email);
@@ -54,7 +57,7 @@ public class AuthController {
       return "auth/LoginFail"; 
     }
    session.setAttribute("loginUser", user);
-		return "redirect:../plans/list.do";
+		return "redirect:../contents/list.do";
 	}
 
   @RequestMapping(value="join", method=RequestMethod.GET)
