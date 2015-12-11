@@ -16,18 +16,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java76.pms.dao.PlansDao;
+import java76.pms.dao.ContentsDao;
 import java76.pms.domain.Users;
 import java76.pms.domain.Contents;
 import java76.pms.util.MultipartHelper;
 
 
 @Controller
-@RequestMapping("/plans/*")
-public class PlansController {
-	public static String SAVED_DIR = "/attachFile";
+@RequestMapping("/contents/*")
+public class ContentsController {
+	public static String SAVED_DIR = "/video";
 	
-	@Autowired PlansDao plansDao;
+	@Autowired ContentsDao contentsDao;
 	@Autowired ServletContext servletContext;
 	
 	@RequestMapping("list")
@@ -39,24 +39,24 @@ public class PlansController {
 			@RequestParam(defaultValue = "desc")String align,
 				HttpServletRequest request) throws Exception {
 
-		Users member = (Users)session.getAttribute("loginUser");
+		Users user = (Users)session.getAttribute("loginUser");
 		HashMap<String, Object> paramMap = new HashMap<>();
     paramMap.put("startIndex", (pageNo - 1) * pageSize);
     paramMap.put("length", pageSize);
     paramMap.put("keyword", keyword);
     paramMap.put("align", align);
-    paramMap.put("no", member.getNo());
+    paramMap.put("no", user.getUno());
     
-		List<Contents> plans = plansDao.selectList(paramMap);
+		List<Contents> contents = contentsDao.selectList(paramMap);
 
-		request.setAttribute("plans", plans);
+		request.setAttribute("contents", contents);
 		
-		return "plans/PlansList";
+		return "contents/ContentsList";
 	}
 	
 	@RequestMapping(value="add", method=RequestMethod.GET)
 	public String form(){
-		return "plans/PlansForm";
+		return "contents/ContentsForm";
 	}
 	
 	@RequestMapping(value="add", method=RequestMethod.POST)
@@ -68,12 +68,12 @@ public class PlansController {
 			File newFile = new File( servletContext.getRealPath(SAVED_DIR) 
 					+ "/" + newFilename);
 			file.transferTo(newFile);
-			plans.setAttachFile(newFilename);
+			plans.setVideo(newFilename);
 		}
-		Users member = (Users)session.getAttribute("loginUser");
-		plans.setNo(member.getNo());
-		System.out.println(member.getNo());
-		plansDao.insert(plans);
+		Users user = (Users)session.getAttribute("loginUser");
+		plans.setContents_uno(user.getUno());
+		// System.out.println(member.getUno());
+		contentsDao.insert(plans);
 
 		return "redirect:list.do";
 	}
@@ -81,9 +81,9 @@ public class PlansController {
 	@RequestMapping("detail")
 	public String detail(int no, Model model) throws Exception {
 
-		Contents plans = plansDao.selectOne(no);
-		model.addAttribute("plan", plans);    
-		return "plans/PlansDetail";
+		Contents contents = contentsDao.selectOne(no);
+		model.addAttribute("content", contents);    
+		return "contents/ContentsDetail";
 	}
 
 	@RequestMapping(value="update", method=RequestMethod.POST)
@@ -98,14 +98,14 @@ public class PlansController {
 			File attachfile = new File(servletContext.getRealPath(SAVED_DIR) 
 				                     	+ "/" + newFilename);
 			file.transferTo(attachfile);
-			plans.setAttachFile(newFilename);
-		}	else if (plans.getAttachFile().length() == 0) {
-			plans.setAttachFile(null);
+			plans.setVideo(newFilename);
+		}	else if (plans.getVideo().length() == 0) {
+			plans.setVideo(null);
 		}
 
-		if (plansDao.update(plans) <= 0) {
+		if (contentsDao.update(plans) <= 0) {
 			model.addAttribute("errorCode","401");
-			return "plans/PlansAuthError";
+			return "contents/ContentsAuthError";
 		} 
 		
 		return "redirect:list.do";
@@ -121,9 +121,9 @@ public class PlansController {
     paramMap.put("no", no);
     paramMap.put("password", password);
     
-		if (plansDao.delete(paramMap) <= 0) {
+		if (contentsDao.delete(paramMap) <= 0) {
 			model.addAttribute("errorCode", "401");
-			return "plans/PlansAuthError";
+			return "contents/ContentsAuthError";
 		} 
 
 		return "redirect:list.do";

@@ -16,16 +16,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java76.pms.dao.MembersDao;
+import java76.pms.dao.ContentsDao;
+import java76.pms.dao.UsersDao;
 import java76.pms.domain.Users;
 import java76.pms.util.MultipartHelper;
 import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
-@RequestMapping("/members/*")
-public class MembersController {
-	public static String SAVED_DIR = "/file";
-	@Autowired MembersDao membersDao;
+@RequestMapping("/users/*")
+public class UsersController {
+	public static String SAVED_DIR = "/photo";
+	@Autowired UsersDao usersDao;
 	@Autowired ServletContext servletContext;
 	
 	@RequestMapping("list")
@@ -42,19 +43,19 @@ public class MembersController {
     paramMap.put("keyword", keyword);
     paramMap.put("align", align);
     
-		List<Users> members = membersDao.selectList(paramMap);
+		List<Users> users = usersDao.selectList(paramMap);
 
-		request.setAttribute("members", members);
-		return "members/MembersList";
+		request.setAttribute("users", users);
+		return "users/UsersList";
 	}
 
 	@RequestMapping(value="add", method=RequestMethod.GET)
 	public String form(){
-		return "members/MembersForm";
+		return "users/UsersForm";
 	}
 	
 	@RequestMapping(value="add", method=RequestMethod.POST)
-	public String add(Users members, MultipartFile photofile) throws Exception {
+	public String add(Users users, MultipartFile photofile) throws Exception {
 
 		/*if (photofile.getSize() > 0) {
 			String newFileName = MultipartHelper.generateFilename(photofile.getOriginalFilename()); // 파일 이름 
@@ -69,9 +70,9 @@ public class MembersController {
 		}
 		*/
 	
-		membersDao.insert(members);
+		usersDao.insert(users);
 	  
-	  System.out.println(members.toString());
+	//  System.out.println(users.toString());
 
 		return "redirect:../auth/login.do";
 	}
@@ -81,15 +82,15 @@ public class MembersController {
 			String email,
 			HttpServletRequest request) throws Exception {
 
-		Users members = membersDao.selectOne(email);
-		request.setAttribute("members", members);
+		Users users = usersDao.selectOne(email);
+		request.setAttribute("users", users);
 
-		return "members/MembersDetail";
+		return "users/UsersDetail";
 
 	}
 	@RequestMapping("update")
 	public String update(
-			Users student,
+			Users users,
 			MultipartFile photofile,
 			String photo,
 			HttpServletRequest request) throws Exception {
@@ -106,12 +107,12 @@ public class MembersController {
 			makeThumbnailImage(
 					servletContext.getRealPath(SAVED_DIR) + "/" + newFileName,
 					servletContext.getRealPath(SAVED_DIR) +"/s-"+newFileName + ".png");
-			student.setPhoto(newFileName);
-		} else if (student.getPhoto().length() == 0) {
-			student.setPhoto(null);
+			users.setPhoto(newFileName);
+		} else if (users.getPhoto().length() == 0) {
+			users.setPhoto(null);
 		}
 
-		if (membersDao.update(student) <= 0){
+		if (usersDao.update(users) <= 0){
 			request.setAttribute("errorCode", "401");
 			return "members/MembersAuthError";
 		}
@@ -122,16 +123,16 @@ public class MembersController {
 			String email,
 			Model model) throws Exception {
 
-		if (membersDao.delete(email) <= 0) { 
+		if (usersDao.delete(email) <= 0) { 
 			model.addAttribute("errorCode", "401");
-			return "members/MembersAuthError";
+			return "users/UsersAuthError";
 		}
 		return "redirect:list.do";
 	}
 	
 	@RequestMapping(value="join", method=RequestMethod.GET)
   public String joinform() {
-    return "/members/JoinForm";
+    return "/contents/JoinForm";
   }
 	
   private void makeThumbnailImage(String originPath, String thumbPath) 

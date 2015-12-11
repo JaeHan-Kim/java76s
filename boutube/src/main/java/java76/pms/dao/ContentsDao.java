@@ -6,7 +6,7 @@ import java.util.Map;
 import java76.pms.domain.Contents;
 
 
-public interface PlansDao {
+public interface ContentsDao {
 
   public List<Contents> selectList(Map<String, Object> paramMap);
   

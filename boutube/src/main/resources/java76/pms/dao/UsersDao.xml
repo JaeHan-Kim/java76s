@@ -6,46 +6,46 @@
 namespace: SQL문을 분류하는 용도로 사용하는 그룹명.
            프로그래밍의 일관성을 위해서 가능한 DAO의 패키지명과 같게 하라!
  -->
-<mapper namespace="java76.pms.dao.MembersDao">
+<mapper namespace="java76.pms.dao.UsersDao">
 	<sql id="select_inc">
-		select no,name, email
+		select uno,name, email
 	</sql>
-  <select id="selectList" resultType="members"
+  <select id="selectList" resultType="users"
   				parameterType="map">
 		<include refid="select_inc"/>
-	  from members
+	  from users
     limit #{startIndex}, #{length}
   </select>
   
-  <insert id="insert" parameterType="members">
-		insert into members(email,name,photo,pwd)
+  <insert id="insert" parameterType="users">
+		insert into users(email,name,photo,password)
     values(#{email},#{name},#{photo},sha1(#{password}))
 	</insert>
 	
 	<delete id="delete" parameterType="string">
-		delete from members where email=#{value}
+		delete from users where email=#{value}
 	</delete>
 	
-	<update id="update" parameterType="members">
-		update members set 
+	<update id="update" parameterType="users">
+		update users set 
 			name=#{name},
 			email=#{email},
-			pwd=#{pwd},
+			password=#{password},
 			photo=#{photo}
 		where no=#{no}
 	</update>
 	
-	<select id="selectOne" resultType="members"
+	<select id="selectOne" resultType="users"
   				parameterType="string">
     <include refid="select_inc"/>
-    from members where email=#{value}
+    from users where email=#{value}
   </select>
   
-  <select id="login" resultType="members"
+  <select id="login" resultType="users"
   				parameterType="map">
     <include refid="select_inc"/>
-    from members
-		where email=#{email} and pwd=sha1(#{password})
+    from users
+		where email=#{email} and password=sha1(#{password})
   </select>
  
 </mapper>

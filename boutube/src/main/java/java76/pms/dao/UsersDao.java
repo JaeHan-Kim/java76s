@@ -5,7 +5,7 @@ import java.util.Map;
 
 import java76.pms.domain.Users;
 
-public interface MembersDao {
+public interface UsersDao {
 
   public List<Users> selectList(Map<String, Object> paramMap);
  
@@ -21,3 +21,5 @@ public interface MembersDao {
 
   public Users login(Map<String, Object> paramMap);
 }
+
+

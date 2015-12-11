@@ -1,5 +1,4 @@
 <%-- 게시물 변경, 삭제시 오류 발생시 --%>
-<%@page import="java76.pms.domain.Plans"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" 
 		contentType="text/html; charset=UTF-8"

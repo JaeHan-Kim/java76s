@@ -11,13 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java76.pms.dao.MembersDao;
+import java76.pms.dao.UsersDao;
 import java76.pms.domain.Users;
+
 
 @Controller
 @RequestMapping("/auth/*")
 public class AuthController {
-	@Autowired MembersDao membersDao;
+	@Autowired UsersDao usersDao;
 	
 	@RequestMapping(value="login", method=RequestMethod.GET)
 	public String loginform() {
@@ -46,13 +47,13 @@ public class AuthController {
     paramMap.put("email", email);
     paramMap.put("password", password);
     
-    Users member = membersDao.login(paramMap);
+    Users user = usersDao.login(paramMap);
     
-    if (member == null) { // 로그인 실패!
+    if (user == null) { // 로그인 실패!
       session.invalidate(); // 세션을 무효화시킴. => 새로 세션 객체 생성!
       return "auth/LoginFail"; 
     }
-   session.setAttribute("loginUser", member);
+   session.setAttribute("loginUser", user);
 		return "redirect:../plans/list.do";
 	}
 

@@ -22,28 +22,22 @@
 	<div class="jumbotron">
   <div class="container text-center">
 	<h1>일정 - 상세 정보</h1>
-	<c:if test="${not empty plan}">
+	<c:if test="${not empty users}">
 		<form id='form1' action='update.do' method='post' enctype="multipart/form-data">
 			<table border='1'>
 				<tr>
 					<th>제목</th>
-					<td><input type='text' value='${plan.plan_title}' name='plan_title'></td>
+					<td><input type='text' value='${users.name}' name='plan_title'></td>
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td><textarea rows='10' cols='60' name='content'>${plan.plan_content}</textarea></td>
-				</tr>
-				<tr>
-				<th>Picture</th>
-					<td><a href='../attachFile/${plan.attachFile}'>${plan.attachFile}</a><br>
-      		<input type='file' name='file'>
-      		<input type='hidden' name='attachFile' value='${plan.attachFile}'></td>
+					<td><textarea rows='10' cols='60' name='content'>${users.email}</textarea></td>
 				</tr>
 			</table>
 
 			<p>
 				<button name="update" type="submit" class='button1'>변경</button>
-				<a id='aDelete' href='delete.do?pno=${plan.pno}' class='button2' onclick='deleteBoard()'>삭제</a>
+				<a id='aDelete' href='delete.do?pno=${users.cno}' class='button2' onclick='deleteBoard()'>삭제</a>
 			</p>
 		</form>
 		<script>
@@ -60,7 +54,7 @@
 			}
 		</script>
 	</c:if>
-	<c:if test="${empty plan}">
+	<c:if test="${empty users}">
 		<p>해당 번호의 게시물을 찾을 수 없습니다.</p>
 	</c:if>
   </div>

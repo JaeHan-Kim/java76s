@@ -11,41 +11,33 @@
 <body>
 <jsp:include page="/Header.jsp"/>
 <h1> 회원 정보 </h1>
-<c:if test="${not empty student}">
+<c:if test="${not empty content}">
 <form id ='form1' action='update.do' method="post" enctype="multipart/form-data">
 <table border="1">
 <tr>
 <th>Picture</th>
 <td><img width='200' height='300' 
-      src='../file/${(empty student.pic)?"default.png":student.pic}' width="300" height="300"><br>
+      src='../file/${(empty content.video)?"default.png":content.video}' width="300" height="300"><br>
       <input type='file' name='photofile'>
-      <input type='hidden' name='pic' value='${student.pic}'></td>
+      <input type='hidden' name='pic' value='${content.video}'></td>
 </tr>
 <tr>
 <tr>
 <th>Email</th>
-<td><input type="text" name="email" value="${student.email}" readonly></td>
+<td><input type="text" name="email" value="${content.email}" readonly></td>
 </tr>
 <tr>
 <th>Name</th>
-<td><input type="text" name="name" value="${student.name}"></td>
-</tr>
-<tr>
-<th>Tel</th>
-<td><input type="text" name="tel" value="${student.tel}"></td>
-</tr>
-<tr>
-<th>Cid</th>
-<td><input type="text" name="cid" value="${student.cid}"></td>
+<td><input type="text" name="name" value="${content.name}"></td>
 </tr>
 </table>
 <p>
 <button name="update" type="submit" class='button1'>변경</button>
-<a href='delete.do?email=${student.email}' class='button2'>삭제</a>
+<a href='delete.do?email=${content.email}' class='button2'>삭제</a>
 </p>
 </form>
 </c:if>
-<c:if test="${empty student}">
+<c:if test="${empty content}">
  해당 이메일의 학생은 존재하지 않습니다.
 </c:if>
 <jsp:include page="/Copyright.jsp"/>

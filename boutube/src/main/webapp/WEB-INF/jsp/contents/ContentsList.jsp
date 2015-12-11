@@ -1,5 +1,4 @@
 <%-- EL을 이용하여 게시물 데이터 출력하기 --%>
-<%@page import="java76.pms.domain.Plans"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
@@ -32,12 +31,14 @@
 		<br>
 		<div class="row">
 
-			<c:forEach var="plan" items="${plans}">
-				<!--  <img src='../file/s-${(empty student.pic)?"default":student.pic}.png'> -->
+			<c:forEach var="content" items="${contents}">
+				<!--  <img src='../file/s-${(empty content.ph)?"default":student.pic}.png'> -->
 				<div class="col-sm-3">
-					<p>${plan.plan_title}
-					<a href='detail.do?no=${plan.no}'><img src="../attachFile/image.jpeg" width="150" height="80"
-						class="img-responsive" style="width: 100%" alt="Image"></a>
+					<p>${content.title}
+					<a href='detail.do?cno=${content.cno}'>가나
+					<!--<img src="../attachFile/image.jpeg" width="150" height="80"
+						class="img-responsive" style="width: 100%" alt="Image">-->
+						</a>
 					</p>
 				</div>
 			</c:forEach>
