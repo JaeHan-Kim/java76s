@@ -9,11 +9,11 @@ public interface UsersDao {
 
   public List<Users> selectList(Map<String, Object> paramMap);
  
-  public int insert(Users members);
+  public int insert(Users users);
 
   public int delete(String email);
   
-  public int update(Users members);
+  public int update(Users users);
  
   public Users selectOne(String email);
 

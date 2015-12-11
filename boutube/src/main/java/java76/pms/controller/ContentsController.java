@@ -17,10 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java76.pms.dao.ContentsDao;
-import java76.pms.domain.Users;
 import java76.pms.domain.Contents;
+import java76.pms.domain.Users;
 import java76.pms.util.MultipartHelper;
-
 
 @Controller
 @RequestMapping("/contents/*")
@@ -60,21 +59,26 @@ public class ContentsController {
 	}
 	
 	@RequestMapping(value="add", method=RequestMethod.POST)
-	public String add(HttpSession session,
-			Contents contents, MultipartFile video) throws Exception {
-		System.out.println("캬캬캬");
-		/*
+	public String add(
+			HttpSession session,
+			String title,
+			String content,
+			MultipartFile video) throws Exception{
+		Users user = (Users)session.getAttribute("loginUser");
+	
+		Contents contents = new Contents();
+		contents.setTitle(title);
+		contents.setContent(content);
+		contents.setContents_uno(user.getUno());
 		if (video.getSize() >0) {
 			String newFilename = MultipartHelper.generateFilename(video.getOriginalFilename()); // 파일 이름 
-			File newFile = new File(servletContext.getRealPath(SAVED_DIR) 
+			File newFile = new File( servletContext.getRealPath(SAVED_DIR) 
 					+ "/" + newFilename);
 			video.transferTo(newFile);
 			contents.setVideo(newFilename);
 		}
-		Users user = (Users)session.getAttribute("loginUser");
-		contents.setContents_uno(user.getUno());*/
-//		contentsDao.insert(contents);
-
+		
+		contentsDao.insert(contents);
 		return "redirect:list.do";
 	}
 

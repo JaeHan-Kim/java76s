@@ -10,11 +10,11 @@ public interface ContentsDao {
 
   public List<Contents> selectList(Map<String, Object> paramMap);
   
-  public int insert(Contents plans);
+  public int insert(Contents contents);
   
   public int delete(Map<String, Object> paramMap);
   
-  public int update(Contents plans);
+  public int update(Contents contents);
 
   public Contents selectOne(int no);
 
