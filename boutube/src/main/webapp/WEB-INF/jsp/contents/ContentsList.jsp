@@ -18,7 +18,7 @@
 <link rel="stylesheet" type="text/css" href="../css/css1.css" />
 </head>
 <body>
-	
+	<jsp:include page="/Header.jsp" />
 	<footer class="container-fluid text-center">
 		<jsp:include page="/Copyright.jsp" />
 	</footer>

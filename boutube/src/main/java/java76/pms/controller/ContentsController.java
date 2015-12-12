@@ -61,14 +61,14 @@ public class ContentsController {
 	@RequestMapping(value="add", method=RequestMethod.POST)
 	public String add(
 			HttpSession session,
-			String title,
-			String content,
+			Contents contents,
 			MultipartFile video) throws Exception{
 		Users user = (Users)session.getAttribute("loginUser");
 	
-		Contents contents = new Contents();
-		contents.setTitle(title);
-		contents.setContent(content);
+		//Contents contents = new Contents();
+		//contents.setTitle(title);
+		//contents.setContent(content);
+		System.out.println("add(1)");
 		contents.setContents_uno(user.getUno());
 		if (video.getSize() >0) {
 			String newFilename = MultipartHelper.generateFilename(video.getOriginalFilename()); // 파일 이름 
@@ -77,7 +77,7 @@ public class ContentsController {
 			video.transferTo(newFile);
 			contents.setVideo(newFilename);
 		}
-		
+		System.out.println("add(2)");
 		contentsDao.insert(contents);
 		return "redirect:list.do";
 	}
