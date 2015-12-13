@@ -56,7 +56,7 @@ footer {
 	<jsp:include page="/Header.jsp"/>
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<jsp:include page="/Leftside.jsp"/>
+		<!-- 	<jsp:include page="/Leftside.jsp"/> -->
 			<div class="col-sm-8 text-left">
 			<form action='add.do' method='post' role="form"
 		enctype="multipart/form-data">
