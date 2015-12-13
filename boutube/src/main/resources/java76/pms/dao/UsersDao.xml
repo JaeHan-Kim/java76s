@@ -13,7 +13,7 @@ namespace: SQL문을 분류하는 용도로 사용하는 그룹명.
   <select id="selectList" resultType="users"
   				parameterType="map">
 		<include refid="select_inc"/>
-	  from users
+	  from users where auth = 0
     limit #{startIndex}, #{length}
   </select>
   
@@ -22,8 +22,8 @@ namespace: SQL문을 분류하는 용도로 사용하는 그룹명.
     values(#{email},#{name},#{photo},sha1(#{password}),#{nickname})
 	</insert>
 	
-	<delete id="delete" parameterType="string">
-		delete from users where email=#{value}
+	<delete id="delete" parameterType="int">
+		delete from users where uno=#{value}
 	</delete>
 	
 	<update id="update" parameterType="users">

@@ -30,7 +30,9 @@
 					</a>
 					</c:if>
 				</li>
-				<li><a href="add.do">Upload</a></li>
+				<li>
+					<a href="add.do">Upload</a>
+				</li>
 				<li><a href="#">Contact</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -63,7 +65,7 @@
 									<div class="form-group">
 										<label for="exampleInputEmail1">Email address</label> <input
 											type="email" class="form-control" name="email"
-											value"" placeholder="Enter email">
+											value="${cookie.email.value}" placeholder="Enter email">
 									</div>
 									<div class="form-group">
 										<label for="exampleInputPassword1">Password</label> <input
@@ -72,7 +74,8 @@
 
 									</div>
 									<div class="checkbox">
-										<label> <input type="checkbox"> email 저장
+										<label> <input type="checkbox" name="saveEmail" 
+    ${(empty cookie.email) ? "":"checked"}> email 저장
 										</label>
 									</div>
 									<div class="btn-group btn-group-justified" role="group"

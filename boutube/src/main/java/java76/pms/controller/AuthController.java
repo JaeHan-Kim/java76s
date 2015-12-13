@@ -33,10 +33,9 @@ public class AuthController {
 			String saveEmail,  
 			HttpServletResponse response,
 			HttpSession session) {
-  	
     Cookie emailCookie = null;
     if (saveEmail != null) { // 이메일 저장을 체크했으면,
-      emailCookie = new Cookie("email", email);
+    	emailCookie = new Cookie("email", email);
       emailCookie.setMaxAge(60 * 60 * 24 * 15);
     } else {
       emailCookie = new Cookie("email", "");

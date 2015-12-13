@@ -11,7 +11,7 @@ public interface UsersDao {
  
   public int insert(Users users);
 
-  public int delete(String email);
+  public int delete(int uno);
   
   public int update(Users users);
  

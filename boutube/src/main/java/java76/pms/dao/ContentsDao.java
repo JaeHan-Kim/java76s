@@ -18,4 +18,6 @@ public interface ContentsDao {
 
   public Contents selectOne(int no);
 
+	public List<Contents> paging();
+
 }

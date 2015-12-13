@@ -42,7 +42,7 @@ public class ContentsController {
 			@RequestParam(defaultValue = "no")String keyword,
 			@RequestParam(defaultValue = "desc")String align,
 				HttpServletRequest request) throws Exception {
-		log.debug("list 호");
+		log.debug("list 호출");
 		Users user = (Users)session.getAttribute("loginUser");
 		if (user == null) {
 			log.debug("user null");
@@ -53,6 +53,22 @@ public class ContentsController {
     paramMap.put("keyword", keyword);
     paramMap.put("align", align);
   //paramMap.put("no", user.getUno());
+    
+    
+    List<Contents> allContents = contentsDao.paging();
+    int cnt = 0;
+    for(Contents contmp : allContents) {
+      cnt++;
+    }
+    
+    cnt = (int)Math.ceil(cnt / 4.0);
+    
+    request.setAttribute("cnt", cnt);
+    
+    int[] temp = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; 
+
+    request.setAttribute("temp", temp);
+    
     
 		List<Contents> contents = contentsDao.selectList(paramMap);
 
@@ -78,13 +94,13 @@ public class ContentsController {
 		contents.setContents_uno(user.getUno());
 		if (videofile.getSize() >0) {
 			String newFilename = MultipartHelper.generateFilename(videofile.getOriginalFilename()); // 파일 이름 
-			File newFile = new File( servletContext.getRealPath(SAVED_DIR) 
-					+ "/" + newFilename);
+		File newFile = new File( servletContext.getRealPath(SAVED_DIR) 
+				+ "/" + newFilename);
 			videofile.transferTo(newFile);
 			contents.setVideo(newFilename);
 		}
 		contentsDao.insert(contents);
-		return "contents/ContentsMain";
+		return "redirect:../contents/main.do";
 	}
 
 	@RequestMapping("detail")
@@ -92,7 +108,7 @@ public class ContentsController {
 
 		Contents contents = contentsDao.selectOne(no);
 		model.addAttribute("content", contents);    
-		return "contents/ContentsDetail";
+		return "redirect:../contents/main.do";
 	}
 
 	@RequestMapping(value="update", method=RequestMethod.POST)

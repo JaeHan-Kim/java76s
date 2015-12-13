@@ -36,6 +36,13 @@ namespace: SQL문을 분류하는 용도로 사용하는 그룹명.
    limit #{startIndex}, #{length}
   </select>
   
+  <select id="paging" resultMap="contentMap" parameterType="map">
+    select 
+      cno,
+      video
+    from content
+  </select>
+  
   <insert id="insert" parameterType="contents">
     insert into contents(contents_uno,title,content,cre_dt,video) 
     values(#{contents_uno},#{title},#{content},now(),#{video})

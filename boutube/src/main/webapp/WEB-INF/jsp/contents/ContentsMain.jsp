@@ -227,6 +227,11 @@ footer {
 						<br>
 						<div class="row">
 						<table>
+						<form action="list.do" method='get' class="form">
+<c:forEach var="paging" begin="1" end="${cnt}" varStatus="status">
+  <a href='list.do?pageNo=${temp[status.count]}'>${status.count}</a>
+</c:forEach>
+</form>
 						<c:forEach var="content" items="${contents}">
 							<td>
 								<div class="col-sm-5">
