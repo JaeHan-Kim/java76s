@@ -1,12 +1,10 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>회원 정보 수정</title>
+<title>게시판-상세정보</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -206,13 +204,13 @@ footer {
 </style>
 </head>
 <body>
-	<jsp:include page="/Header.jsp" />
+<jsp:include page="/Header.jsp" />
 	<!-- ----------------------------------- -->
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div id="wrapper" class="active">
 
-		<div id="sidebar-wrapper">
+				<div id="sidebar-wrapper">
 					<ul id="sidebar_menu" class="sidebar-nav">
 						<li class="sidebar-brand"><a id="menu-toggle" href="#">Menu</a></li>
 					</ul>
@@ -221,76 +219,46 @@ footer {
 						<li><a>link2</a></li>
 					</ul>
 				</div>
-	
-	<div class="container-fluid text-center">
-		<div class="row content">
-				<div class="col-sm-8 text-left">
-<h1>개인 정보 수정</h1>
-	<c:if test="${not empty users}">
-		<form id='form1' action='update.do' method='post' enctype="multipart/form-data">
-			<table border='1'>
+				<!-- Page content -->
+
+	<c:if test="${not empty contents}">
+		<div class="form-style-8">
+			<table>
 				<tr>
-				<th>Picture</th>
-					<td><img width='200' height='300' 
-      			src='../photo/${(empty users.photo)?"default.png":users.photo}' width="300" height="300"><br>
-   		    <input type='file' name='photofile'>
-      		<input type='hidden' name='photo' value='${users.photo}'></td>
-				</tr>
+					<video width="960" height="500" controls>
+								<source src="../video/${contents.video}" type="video/mp4">
+							</video>
+				</tr>	
 				<tr>
-					<th>이메일</th>
+					<td><input type='hidden' name='title' value='  ${contents.title}'>
+						<h1>${contents.title}</h1>
+					</td>
+									</tr>
+					<tr>
 					<td>
-					<input type='text' value='${users.email}' name='email' readonly>
-					<input type='hidden' name='uno' value='${users.uno}'>
+					<p>${contents.content}</p>
+					</td>
+					<td align="right">
+					<p>${contents.views}, ${contents.cre_dt}
 					</td>
 				</tr>
-				<tr>
-					<th>이름</th>
-					<td><input type='text' value='${users.name}' name='name'></td>
-				</tr>
-				<tr>
-					<th>비밀번호</th>
-					<td><input type='password' name='password'></td>
-				</tr>
 			</table>
-
-			<p>
-			<br>
-				<button name="update" type="submit" class="btn btn-info" class="btn btn-primary btn-md">변경</button>
-				<a id='aDelete' href='delete.do?uno=${users.uno}' onclick='deleteBoard()'class="btn btn-info" class="btn btn-primary btn-md" role="button">삭제</a>
-			</p>
-		</form>
-		<script>
-			function deleteBoard() {
-				// 암호 텍스트 상자에 입력된 내용을 가져온다.
-				var password = document.getElementById('inputPassword').value;
-
-				// a 태그의 href 값을 가져와서 "&password=암호" 문자열을 붙인다.
-				var href = document.getElementById('aDelete').href
-						+ "&password=" + password;
-
-				// a 태그의 href 값을 암호 파라미터가 붙은 값으로 변경한다. 
-				document.getElementById('aDelete').href = href;
-			}
-		</script>
+		</div>
 	</c:if>
-	<c:if test="${empty users}">
-		<p>해당 유저는 존재하지 않습니다.</p>
-	</c:if>
+				<footer class="container-fluid text-center">
+					<jsp:include page="/Copyright.jsp" />
+				</footer>
+
 			</div>
 		</div>
 	</div>
 
-<footer class="container-fluid text-center">
-	<jsp:include page="/Copyright.jsp" />
-</footer>
-</div>
-</div>
-</div>
-<script>
-$("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("active");
-});
-</script>
+	<!-- ----------------------------------- -->
+	<script>
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#wrapper").toggleClass("active");
+		});
+	</script>
 </body>
 </html>

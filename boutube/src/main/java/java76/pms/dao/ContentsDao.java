@@ -8,16 +8,18 @@ import java76.pms.domain.Contents;
 
 public interface ContentsDao {
 
-  public List<Contents> selectList(Map<String, Object> paramMap);
+  List<Contents> selectList(Map<String, Object> paramMap);
   
-  public int insert(Contents contents);
+  int insert(Contents contents);
   
-  public int delete(Map<String, Object> paramMap);
+  int delete(Map<String, Object> paramMap);
   
-  public int update(Contents contents);
+  int update(Contents contents);
 
-  public Contents selectOne(int no);
+  Contents selectOne(int cno);
 
-	public List<Contents> paging();
+	List<Contents> paging();
+
+	int addViews(int no);
 
 }

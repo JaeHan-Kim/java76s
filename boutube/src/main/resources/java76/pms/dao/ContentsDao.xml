@@ -26,8 +26,8 @@ namespace: SQL문을 분류하는 용도로 사용하는 그룹명.
     order by
     <choose>
     		<when test="keyword == 'title'">title </when>
-    		<when test="keyword == 'views'">views</when>
-    		<otherwise>cre_dt </otherwise>
+    		<when test="keyword == 'cre_dt'">cre_dt</when>
+    		<otherwise>views </otherwise>
     	</choose>
     	<choose>
     		<when test="align == 'asc'">asc </when>
@@ -36,12 +36,13 @@ namespace: SQL문을 분류하는 용도로 사용하는 그룹명.
    limit #{startIndex}, #{length}
   </select>
   
-  <select id="paging" resultMap="contentMap" parameterType="map">
+    <select id="paging" resultMap="contentsMap" parameterType="map">
     select 
       cno,
       video
-    from content
+    from contents
   </select>
+  
   
   <insert id="insert" parameterType="contents">
     insert into contents(contents_uno,title,content,cre_dt,video) 
@@ -62,12 +63,19 @@ namespace: SQL문을 분류하는 용도로 사용하는 그룹명.
     where cno=#{cno}
   </update>
   
+  <update id="addViews" parameterType="int">
+    update contents set 
+      views = views + 1
+    where cno=#{cno}
+  </update>
   <select id="selectOne" resultMap="contentsMap" parameterType="int">
     select
     	cno,
       title,
       content,
-      cre_dt
+      cre_dt,
+      video,
+      content
     from contents
     where cno=#{cno}
   </select>

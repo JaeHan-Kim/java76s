@@ -16,6 +16,9 @@
 
 <p>
 <c:choose>
+<c:when test="${errorCode == '401'}">
+비밀번호 오류입니다. 갱신 할 수 없습니다.
+</c:when>
 <c:when test="${errorCode == '500'}">
 중복된 이메일입니다. 사용할 수 없습니다!
 </c:when>

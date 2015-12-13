@@ -210,7 +210,7 @@ footer {
 		<div class="row content">
 			<div id="wrapper" class="active">
 
-		<div id="sidebar-wrapper">
+				<div id="sidebar-wrapper">
 					<ul id="sidebar_menu" class="sidebar-nav">
 						<li class="sidebar-brand"><a id="menu-toggle" href="#">Menu</a></li>
 					</ul>
@@ -220,44 +220,34 @@ footer {
 					</ul>
 				</div>
 				<!-- Page content -->
-				<div id="page-content-wrapper">
-					<!-- Keep all page content within the page-content inset div! -->
-					<div class="page-content inset">
-						<h3>Some of my Work</h3>
-						<br>
-						<div class="row">
-						<table>
-						<form action="list.do" method='get' class="form">
-<c:forEach var="paging" begin="1" end="${cnt}" varStatus="status">
-  <a href='list.do?pageNo=${temp[status.count]}'>${status.count}</a>
-</c:forEach>
-</form>
-						<c:forEach var="content" items="${contents}">
-							<td>
-								<div class="col-sm-5">
-									<video width="280" height="200" controls>
-										<source src="../video/${content.video}" type="video/mp4">
-									</video>
-									<p>Some text..</p>
-								</div>
-							</td>
-						</c:forEach>
-					</table>
-						</div>
-					</div>
-					<footer class="container-fluid text-center">
-		<jsp:include page="/Copyright.jsp" />
-	</footer>
 
-				</div>
+				<table>
+					<c:forEach var="content" items="${contents}">
+						<td><a href="detail.do?cno=${content.cno}">
+						<video width="280" height="200" controls>
+								<source src="../video/${content.video}" type="video/mp4">
+							</video>
+							<p>${content.title}<br>
+							 조회수 ${content.views} 
+							 </p></a>
+							 </td>
+					</c:forEach>
+				</table>
+				<form action="main.do" method='get' class="form">
+					<c:forEach var="paging" begin="1" end="${cnt}" varStatus="status">
+						<a href='main.do?pageNo=${temp[status.count]}'>${status.count}</a>
+					</c:forEach>
+				</form>
+				<footer class="container-fluid text-center">
+					<jsp:include page="/Copyright.jsp" />
+				</footer>
+
 			</div>
 		</div>
-
-
-
 	</div>
+
 	<!-- ----------------------------------- -->
-		<script>
+	<script>
 		$("#menu-toggle").click(function(e) {
 			e.preventDefault();
 			$("#wrapper").toggleClass("active");

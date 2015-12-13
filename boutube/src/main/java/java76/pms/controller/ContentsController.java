@@ -27,61 +27,55 @@ import java76.pms.util.MultipartHelper;
 public class ContentsController {
 	private static final Logger log = Logger.getLogger(ContentsController.class);
 	public static String SAVED_DIR = "/video";
-	
+
 	@Autowired ContentsDao contentsDao;
 	@Autowired ServletContext servletContext;
-//	@RequestMapping(value="main.do", method=RequestMethod.GET)
-//	public String mainform() {
-//		return "contents/ContentsMain";
-//	}
+	//	@RequestMapping(value="main.do", method=RequestMethod.GET)
+	//	public String mainform() {
+	//		return "contents/ContentsMain";
+	//	}
 	@RequestMapping("main")
 	public String list(
 			HttpSession session,
 			@RequestParam(defaultValue = "1")int pageNo, 
-			@RequestParam(defaultValue = "10")int pageSize,
-			@RequestParam(defaultValue = "no")String keyword,
-			@RequestParam(defaultValue = "desc")String align,
-				HttpServletRequest request) throws Exception {
+			@RequestParam(defaultValue = "4")int pageSize,
+			HttpServletRequest request) throws Exception {
 		log.debug("list 호출");
 		Users user = (Users)session.getAttribute("loginUser");
 		if (user == null) {
 			log.debug("user null");
 		}
 		HashMap<String, Object> paramMap = new HashMap<>();
-    paramMap.put("startIndex", (pageNo - 1) * pageSize);
-    paramMap.put("length", pageSize);
-    paramMap.put("keyword", keyword);
-    paramMap.put("align", align);
-  //paramMap.put("no", user.getUno());
-    
-    
-    List<Contents> allContents = contentsDao.paging();
-    int cnt = 0;
-    for(Contents contmp : allContents) {
-      cnt++;
-    }
-    
-    cnt = (int)Math.ceil(cnt / 4.0);
-    
-    request.setAttribute("cnt", cnt);
-    
-    int[] temp = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; 
+		paramMap.put("startIndex", (pageNo - 1) * pageSize);
+		paramMap.put("length", pageSize);
 
-    request.setAttribute("temp", temp);
-    
-    
+		List<Contents> allContents = contentsDao.paging();
+		int cnt = 0;
+		for(Contents contmp : allContents) {
+			cnt++;
+		}
+
+		cnt = (int)Math.ceil(cnt / 4.0);
+
+		request.setAttribute("cnt", cnt);
+
+		int[] temp = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; 
+
+		request.setAttribute("temp", temp);
+
+
 		List<Contents> contents = contentsDao.selectList(paramMap);
 
 		request.setAttribute("contents", contents);
-		
+
 		return "contents/ContentsMain";
 	}
-	
+
 	@RequestMapping(value="add", method=RequestMethod.GET)
 	public String form(){
 		return "contents/ContentsForm";
 	}
-	
+
 	@RequestMapping(value="add", method=RequestMethod.POST)
 	public String add(
 			HttpSession session,
@@ -94,8 +88,8 @@ public class ContentsController {
 		contents.setContents_uno(user.getUno());
 		if (videofile.getSize() >0) {
 			String newFilename = MultipartHelper.generateFilename(videofile.getOriginalFilename()); // 파일 이름 
-		File newFile = new File( servletContext.getRealPath(SAVED_DIR) 
-				+ "/" + newFilename);
+			File newFile = new File( servletContext.getRealPath(SAVED_DIR) 
+					+ "/" + newFilename);
 			videofile.transferTo(newFile);
 			contents.setVideo(newFilename);
 		}
@@ -104,11 +98,15 @@ public class ContentsController {
 	}
 
 	@RequestMapping("detail")
-	public String detail(int no, Model model) throws Exception {
+	public String detail(int cno, Model model) throws Exception {
+		Contents contents = null;
 
-		Contents contents = contentsDao.selectOne(no);
-		model.addAttribute("content", contents);    
-		return "redirect:../contents/main.do";
+		contentsDao.addViews(cno);
+		model.addAttribute("contents", contents);
+
+		contents = contentsDao.selectOne(cno);
+		model.addAttribute("contents", contents);    
+		return "contents/ContentsDetail";
 	}
 
 	@RequestMapping(value="update", method=RequestMethod.POST)
@@ -117,11 +115,11 @@ public class ContentsController {
 			MultipartFile file, 
 			Model model) throws Exception { 
 		System.out.println("update 실행");
-		
+
 		if (file.getSize() > 0) {
 			String newFilename = MultipartHelper.generateFilename(file.getOriginalFilename()); // 파일 이름 
 			File attachfile = new File(servletContext.getRealPath(SAVED_DIR) 
-				                     	+ "/" + newFilename);
+					+ "/" + newFilename);
 			file.transferTo(attachfile);
 			plans.setVideo(newFilename);
 		}	else if (plans.getVideo().length() == 0) {
@@ -132,20 +130,20 @@ public class ContentsController {
 			model.addAttribute("errorCode","401");
 			return "contents/ContentsAuthError";
 		} 
-		
+
 		return "redirect:../contents/main.do";
 	}
-	
+
 	@RequestMapping("delete")
 	public String delete(
 			int no,
 			String password,
 			Model model) throws Exception {
-		
+
 		HashMap<String, Object> paramMap = new HashMap<>();
-    paramMap.put("no", no);
-    paramMap.put("password", password);
-    
+		paramMap.put("no", no);
+		paramMap.put("password", password);
+
 		if (contentsDao.delete(paramMap) <= 0) {
 			model.addAttribute("errorCode", "401");
 			return "contents/ContentsAuthError";

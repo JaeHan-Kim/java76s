@@ -56,8 +56,10 @@ footer {
 	<jsp:include page="/Header.jsp"/>
 	<div class="container-fluid text-center">
 		<div class="row content">
-		<!-- 	<jsp:include page="/Leftside.jsp"/> -->
+		<div id="wrapper" class="active">
+	
 			<div class="col-sm-8 text-left">
+			
 			<form action='add.do' method='post' role="form"
 		enctype="multipart/form-data">
 		<h1>Video Upload</h1>
@@ -76,18 +78,17 @@ footer {
 			</div>
 		</div>
 		<p>
-			<button type='submit' class="button button3">등록</button>
+			<button type='submit' class="btn btn-success">등록</button>
 		</p>
 
 	</form>
-			</div>
 
 		</div>
 	</div>
-
+	</div>
+			</div>
 	<footer class="container-fluid text-center">
 		<jsp:include page="/Copyright.jsp" />
 	</footer>
-
 </body>
 </html>

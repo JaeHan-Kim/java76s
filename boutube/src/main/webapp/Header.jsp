@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-
-
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -31,7 +29,8 @@
 					</c:if>
 				</li>
 				<li>
-					<a href="add.do">Upload</a>
+				<input type="hidden" id='loginUsername' name='loginUsername' value='${loginUser.name}'>
+					<a id="upload" href="" onclick="message()" >Upload</a>
 				</li>
 				<li><a href="#">Contact</a></li>
 			</ul>
@@ -103,7 +102,7 @@
 				</div>
 				
 				<li><a href="#"><span class="glyphicon glyphicon-log-in"
-				data-toggle="modal" data-target="#joinModal"> Join Us</span>
+				data-toggle="modal" data-target="#joinModal"> Join</span>
 						</a></li>
 			
 			<div class="modal fade" id="joinModal" tabindex="-1"
@@ -178,4 +177,18 @@
 	</div>
 </nav>
 </ul>
+<script type="text/javascript">
+
+function message(){
+	
+	var message = document.getElementById('loginUsername').value;
+	if (message =="") {
+	alert("로그인 후에 이용 부탁드립니다.");
+	var href = "../contents/main.do";
+	} else {
+		var href = "../contents/add.do";
+	}
+		document.getElementById('upload').href = href;
+}
+</script>
 

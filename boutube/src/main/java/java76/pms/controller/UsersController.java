@@ -134,9 +134,9 @@ public class UsersController {
 
 		if (usersDao.update(users) <= 0){
 			request.setAttribute("errorCode", "401");
-			return "members/MembersAuthError";
+			return "users/UsersAuthError";
 		}
-		return "redirect:../contents/main.do";
+		return "redirect:../auth/logout.do";
 	}
 	@RequestMapping("delete")
 	public String delete(
