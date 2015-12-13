@@ -38,7 +38,7 @@ public class UsersController {
 			@RequestParam(defaultValue = "no")String keyword,
 			@RequestParam(defaultValue = "desc")String align,
 			HttpServletRequest request) throws Exception {
-
+/*
 		HashMap<String, Object> paramMap = new HashMap<>();
     paramMap.put("startIndex", (pageNo - 1) * pageSize);
     paramMap.put("length", pageSize);
@@ -47,7 +47,7 @@ public class UsersController {
     
 		List<Users> users = usersDao.selectList(paramMap);
 
-		request.setAttribute("users", users);
+		request.setAttribute("users", users);*/
 		return "users/UsersList";
 	}
 

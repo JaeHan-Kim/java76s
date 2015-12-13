@@ -60,17 +60,8 @@ footer {
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<jsp:include page="/Leftside.jsp"/>
-				<div class="col-sm-8 text-left">
-				<h1>Welcome</h1>
-				<c:forEach var="content" items="${contents}">
-				<div class="col-sm-5">
-    			<video width="280" height="200" >
- 						<source src="../video/${content.video}" type="video/mp4">
-					</video>
-      		<p>Some text..</p>
-    		</div>
-				</c:forEach>
-			</div>
+				
+				
 		</div>
 	</div>
 

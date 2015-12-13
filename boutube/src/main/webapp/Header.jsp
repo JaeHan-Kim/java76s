@@ -20,12 +20,12 @@
 				<li>  </li>
 				<li>
 					<c:if test="${not empty loginUser && loginUser.uno == 1}">
-					<a href="${pageContext.request.contextPath}/users/detail.do"> 
+					<a href="${pageContext.request.contextPath}/users/list.do"> 
 					${loginUser.name}님
 					</a>
 					</c:if> 
 					<c:if test="${not empty loginUser && loginUser.uno != 1}">
-					<a href="#"> 
+					<a href="${pageContext.request.contextPath}/users/detail.do"> 
 					${loginUser.name}님
 					</a>
 					</c:if>
