@@ -1,34 +1,45 @@
-<%-- EL을 이용하여 게시물 데이터 출력하기 --%>
-<%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset='UTF-8'>
-<title>학생 - 목록</title>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-<jsp:include page="/Header.jsp"/>
-<h1>학생 목록</h1>
-<p><a href="add.do">새 학생</a></p>
-<table border="1">
-<tr>
-<th>Email</th>
-<th>Name</th>
-</tr>
-<c:forEach var="user" items="${users}">
-<tr>
-<td>
-<%-- <img src='../file/s-${student.pic}'>--%>
- <img src='../file/s-${(empty users.photo)?"default":users.photo}.png'>
-${users.email}</td>
-<td><a href='detail.do?email=${users.email}'>${users.name}</a></td>
-</tr>
-</c:forEach>
-</table>
-<jsp:include page="/Copyright.jsp"/>
-</body>
 
+<div class="container">
+  <h2>Basic Table</h2>
+  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>            
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
 </html>

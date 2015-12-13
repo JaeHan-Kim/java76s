@@ -6,8 +6,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>일정 - 상세 정보</title>
+<title>회원 정보 수정</title>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -15,29 +16,83 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/css1.css" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+.row.content {
+	height: 450px
+}
+
+.sidenav {
+	padding-top: 20px;
+	background-color: #f1f1f1;
+	height: 100%;
+}
+
+footer {
+	background-color: #555;
+	color: white;
+	padding: 15px;
+}
+
+@media screen and (max-width: 767px) {
+	.sidenav {
+		height: auto;
+		padding: 15px;
+	}
+	.row.content {
+		height: auto;
+	}
+}
+</style>
 </head>
 <body>
 	<jsp:include page="/Header.jsp" />
-	<div class="jumbotron">
-  <div class="container text-center">
-	<h1>일정 - 상세 정보</h1>
+	
+	<div class="container-fluid text-center">
+		<div class="row content">
+			<jsp:include page="/Leftside.jsp"/>
+				<div class="col-sm-8 text-left">
+<h1>개인 정보 수정</h1>
 	<c:if test="${not empty users}">
 		<form id='form1' action='update.do' method='post' enctype="multipart/form-data">
 			<table border='1'>
 				<tr>
-					<th>제목</th>
-					<td><input type='text' value='${users.name}' name='plan_title'></td>
+				<th>Picture</th>
+					<td><img width='200' height='300' 
+      			src='../photo/${(empty users.photo)?"default.png":users.photo}' width="300" height="300"><br>
+   		    <input type='file' name='photofile'>
+      		<input type='hidden' name='photo' value='${users.photo}'></td>
 				</tr>
 				<tr>
-					<th>내용</th>
-					<td><textarea rows='10' cols='60' name='content'>${users.email}</textarea></td>
+					<th>이메일</th>
+					<td>
+					<input type='text' value='${users.email}' name='email' readonly>
+					<input type='hidden' name='uno' value='${users.uno}'>
+					</td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td><input type='text' value='${users.name}' name='name'></td>
+				</tr>
+				<tr>
+					<th>비밀번</th>
+					<td><input type='password' name='password'></td>
 				</tr>
 			</table>
 
 			<p>
 				<button name="update" type="submit" class='button1'>변경</button>
-				<a id='aDelete' href='delete.do?pno=${users.cno}' class='button2' onclick='deleteBoard()'>삭제</a>
+				<a id='aDelete' href='delete.do?pno=${users.uno}' class='button2' onclick='deleteBoard()'>삭제</a>
 			</p>
 		</form>
 		<script>
@@ -55,10 +110,12 @@
 		</script>
 	</c:if>
 	<c:if test="${empty users}">
-		<p>해당 번호의 게시물을 찾을 수 없습니다.</p>
+		<p>해당 유저는 존재하지 않습니다.</p>
 	</c:if>
-  </div>
-</div>
+			</div>
+		</div>
+	</div>
+
 <footer class="container-fluid text-center">
 	<jsp:include page="/Copyright.jsp" />
 </footer>

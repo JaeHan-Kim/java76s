@@ -15,7 +15,7 @@ public interface UsersDao {
   
   public int update(Users users);
  
-  public Users selectOne(String email);
+  public Users selectOne(int uno);
 
   public Users createToDoList(String email);
 

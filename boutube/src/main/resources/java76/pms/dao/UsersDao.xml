@@ -8,7 +8,7 @@ namespace: SQL문을 분류하는 용도로 사용하는 그룹명.
  -->
 <mapper namespace="java76.pms.dao.UsersDao">
 	<sql id="select_inc">
-		select uno,name, email
+		select uno,name, email, photo
 	</sql>
   <select id="selectList" resultType="users"
   				parameterType="map">
@@ -30,15 +30,14 @@ namespace: SQL문을 분류하는 용도로 사용하는 그룹명.
 		update users set 
 			name=#{name},
 			email=#{email},
-			password=#{password},
 			photo=#{photo}
-		where no=#{no}
+		where uno=#{uno} and password=sha1(#{password})
 	</update>
 	
 	<select id="selectOne" resultType="users"
-  				parameterType="string">
+  				parameterType="int">
     <include refid="select_inc"/>
-    from users where email=#{value}
+    from users where uno=#{value}
   </select>
   
   <select id="login" resultType="users"

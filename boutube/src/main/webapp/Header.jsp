@@ -19,15 +19,15 @@
 			<ul class="nav navbar-nav">
 				<li>  </li>
 				<li>
-					<c:if test="${not empty loginUser}">
-					<a href="#"> 
+					<c:if test="${not empty loginUser && loginUser.uno == 1}">
+					<a href="${pageContext.request.contextPath}/users/detail.do"> 
 					${loginUser.name}님
 					</a>
 					</c:if> 
-					<c:if test="${empty loginUser}">
-					<a href="#">
-				  
-					</a> 
+					<c:if test="${not empty loginUser && loginUser.uno != 1}">
+					<a href="#"> 
+					${loginUser.name}님
+					</a>
 					</c:if>
 				</li>
 				<li><a href="add.do">Upload</a></li>
@@ -134,8 +134,13 @@
 											value"" placeholder="Enter email">
 									</div>
 									<div class="form-group">
-										<label for="exampleInputPassword1">Password</label> <input
+										<label for="exampleInputPassword1">Create Password</label> <input
 											type="password" class="form-control" name="password"
+											placeholder="Password">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">Confirm your Password</label> <input
+											type="password" class="form-control" name="rePassword"
 											placeholder="Password">
 									</div>
 									<div class="form-group">

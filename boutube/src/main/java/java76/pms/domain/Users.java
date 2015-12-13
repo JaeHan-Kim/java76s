@@ -11,6 +11,7 @@ public class Users implements Serializable{
   protected String nickname;
   protected String email; 
   protected String password;
+  protected String rePassword;
   protected String read_list;
   protected String photo;
 	public int getUno() {
@@ -67,12 +68,19 @@ public class Users implements Serializable{
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
+	public String getRePassword() {
+		return rePassword;
+	}
+	public void setRePassword(String rePassword) {
+		this.rePassword = rePassword;
+	}
 	@Override
 	public String toString() {
 		return "Users [uno=" + uno + ", auth=" + auth + ", total_like=" + total_like + ", name=" + name + ", nickname="
-		    + nickname + ", email=" + email + ", password=" + password + ", read_list=" + read_list + ", photo=" + photo
-		    + "]";
+		    + nickname + ", email=" + email + ", password=" + password + ", rePassword=" + rePassword + ", read_list="
+		    + read_list + ", photo=" + photo + "]";
 	}
+	
  
   
 }

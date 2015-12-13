@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java76.pms.dao.ContentsDao;
 import java76.pms.dao.UsersDao;
 import java76.pms.domain.Users;
 import java76.pms.util.MultipartHelper;
@@ -56,10 +57,24 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value="add", method=RequestMethod.POST)
-	public String add(Users users, MultipartFile photofile) throws Exception {
+	public String add(Users users, MultipartFile photofile,
+			 Model model) throws Exception {
 		log.debug(users.getName());
-		
-		/*if (photofile.getSize() > 0) {
+    String email = users.getEmail();
+    String regex = "\\w+@\\w+\\.\\w+";
+    String password = users.getPassword();
+    String rePassword = users.getRePassword();
+    
+    boolean emailCheck = Pattern.matches(regex, email);
+    
+    if (emailCheck == false) {
+      model.addAttribute("errorCode", "regex");
+      return "users/UsersAuthError";
+    } else if (!(password.equals(rePassword))) {
+      model.addAttribute("errorCode", "pwd");
+      return "users/UsersAuthError";
+    }
+		if (photofile.getSize() > 0) {
 			String newFileName = MultipartHelper.generateFilename(photofile.getOriginalFilename()); // 파일 이름 
 			File attachfile = new File(
 					servletContext.getRealPath(SAVED_DIR) 
@@ -68,9 +83,8 @@ public class UsersController {
 			makeThumbnailImage(
 					servletContext.getRealPath(SAVED_DIR) + "/" + newFileName,
 					servletContext.getRealPath(SAVED_DIR) +"/s-"+newFileName + ".png");
-			members.setPhoto(newFileName);
+			users.setPhoto(newFileName);
 		}
-		*/
 	
 		usersDao.insert(users);
 	  
@@ -81,10 +95,12 @@ public class UsersController {
 
 	@RequestMapping("detail")
 	public String detail(
-			String email,
+	    HttpSession session,
 			HttpServletRequest request) throws Exception {
-
-		Users users = usersDao.selectOne(email);
+		log.debug("detail 호출");
+		Users user = (Users)session.getAttribute("loginUser");
+		log.debug(user.getUno());
+		Users users = usersDao.selectOne(user.getUno());
 		request.setAttribute("users", users);
 
 		return "users/UsersDetail";
@@ -97,7 +113,9 @@ public class UsersController {
 			String photo,
 			HttpServletRequest request) throws Exception {
 
-
+		log.debug(users.getUno());
+		log.debug(users.getEmail());
+		log.debug(users.getName());
 		if (photofile.getSize() > 0) {
 			String newFileName = MultipartHelper.generateFilename(photofile.getOriginalFilename()); // 파일 이름 
 			ServletContext servletContext = request.getServletContext();
@@ -118,7 +136,7 @@ public class UsersController {
 			request.setAttribute("errorCode", "401");
 			return "members/MembersAuthError";
 		}
-		return "redirect:list.do";
+		return "redirect:../contents/main.do";
 	}
 	@RequestMapping("delete")
 	public String delete(

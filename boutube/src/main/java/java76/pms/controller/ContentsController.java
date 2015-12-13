@@ -100,7 +100,7 @@ public class ContentsController {
 			Contents plans,
 			MultipartFile file, 
 			Model model) throws Exception { 
-		
+		System.out.println("update 실행");
 		
 		if (file.getSize() > 0) {
 			String newFilename = MultipartHelper.generateFilename(file.getOriginalFilename()); // 파일 이름 
@@ -117,7 +117,7 @@ public class ContentsController {
 			return "contents/ContentsAuthError";
 		} 
 		
-		return "redirect:list.do";
+		return "redirect:../contents/main.do";
 	}
 	
 	@RequestMapping("delete")
