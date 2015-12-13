@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +29,7 @@ public class UsersController {
 	public static String SAVED_DIR = "/photo";
 	@Autowired UsersDao usersDao;
 	@Autowired ServletContext servletContext;
-	
+	private static final Logger log = Logger.getLogger(ContentsController.class);
 	@RequestMapping("list")
 	public String list(
 			@RequestParam(defaultValue = "1")int pageNo, 
@@ -56,7 +57,8 @@ public class UsersController {
 	
 	@RequestMapping(value="add", method=RequestMethod.POST)
 	public String add(Users users, MultipartFile photofile) throws Exception {
-
+		log.debug(users.getName());
+		
 		/*if (photofile.getSize() > 0) {
 			String newFileName = MultipartHelper.generateFilename(photofile.getOriginalFilename()); // 파일 이름 
 			File attachfile = new File(
@@ -72,9 +74,9 @@ public class UsersController {
 	
 		usersDao.insert(users);
 	  
-	//  System.out.println(users.toString());
+	  log.debug(users.toString());
 
-		return "redirect:../auth/login.do";
+		return "redirect:../contents/main.do";
 	}
 
 	@RequestMapping("detail")

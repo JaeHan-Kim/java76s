@@ -8,6 +8,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,12 +25,16 @@ import java76.pms.util.MultipartHelper;
 @Controller
 @RequestMapping("/contents/*")
 public class ContentsController {
+	private static final Logger log = Logger.getLogger(ContentsController.class);
 	public static String SAVED_DIR = "/video";
 	
 	@Autowired ContentsDao contentsDao;
 	@Autowired ServletContext servletContext;
-	
-	@RequestMapping("list")
+//	@RequestMapping(value="main.do", method=RequestMethod.GET)
+//	public String mainform() {
+//		return "contents/ContentsMain";
+//	}
+	@RequestMapping("main")
 	public String list(
 			HttpSession session,
 			@RequestParam(defaultValue = "1")int pageNo, 
@@ -37,20 +42,23 @@ public class ContentsController {
 			@RequestParam(defaultValue = "no")String keyword,
 			@RequestParam(defaultValue = "desc")String align,
 				HttpServletRequest request) throws Exception {
-
+		log.debug("list 호");
 		Users user = (Users)session.getAttribute("loginUser");
+		if (user == null) {
+			log.debug("user null");
+		}
 		HashMap<String, Object> paramMap = new HashMap<>();
     paramMap.put("startIndex", (pageNo - 1) * pageSize);
     paramMap.put("length", pageSize);
     paramMap.put("keyword", keyword);
     paramMap.put("align", align);
-    paramMap.put("no", user.getUno());
+  //paramMap.put("no", user.getUno());
     
 		List<Contents> contents = contentsDao.selectList(paramMap);
 
 		request.setAttribute("contents", contents);
 		
-		return "contents/ContentsList";
+		return "contents/ContentsMain";
 	}
 	
 	@RequestMapping(value="add", method=RequestMethod.GET)
@@ -62,24 +70,21 @@ public class ContentsController {
 	public String add(
 			HttpSession session,
 			Contents contents,
-			MultipartFile video) throws Exception{
+			MultipartFile videofile) throws Exception{
 		Users user = (Users)session.getAttribute("loginUser");
-	
-		//Contents contents = new Contents();
-		//contents.setTitle(title);
-		//contents.setContent(content);
-		System.out.println("add(1)");
+		log.debug(contents.getTitle());
+		log.debug(contents.getContent());
+		log.debug(user.getUno());
 		contents.setContents_uno(user.getUno());
-		if (video.getSize() >0) {
-			String newFilename = MultipartHelper.generateFilename(video.getOriginalFilename()); // 파일 이름 
+		if (videofile.getSize() >0) {
+			String newFilename = MultipartHelper.generateFilename(videofile.getOriginalFilename()); // 파일 이름 
 			File newFile = new File( servletContext.getRealPath(SAVED_DIR) 
 					+ "/" + newFilename);
-			video.transferTo(newFile);
+			videofile.transferTo(newFile);
 			contents.setVideo(newFilename);
 		}
-		System.out.println("add(2)");
 		contentsDao.insert(contents);
-		return "redirect:list.do";
+		return "contents/ContentsMain";
 	}
 
 	@RequestMapping("detail")
@@ -114,7 +119,7 @@ public class ContentsController {
 		
 		return "redirect:list.do";
 	}
-
+	
 	@RequestMapping("delete")
 	public String delete(
 			int no,

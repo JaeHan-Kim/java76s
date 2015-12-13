@@ -1,55 +1,93 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset='UTF-8'>
-<title>동영상 추가</title>
-<meta charset='UTF-8'>
+<title>Upload</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../css/button.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+.row.content {
+	height: 450px
+}
+
+.sidenav {
+	padding-top: 20px;
+	background-color: #f1f1f1;
+	height: 100%;
+}
+
+footer {
+	background-color: #555;
+	color: white;
+	padding: 15px;
+}
+
+@media screen and (max-width: 767px) {
+	.sidenav {
+		height: auto;
+		padding: 15px;
+	}
+	.row.content {
+		height: auto;
+	}
+}
+</style>
 </head>
 <body>
-	<jsp:include page="/Header.jsp" />
-	<form action='add.do' method='post' role="form"
+	<jsp:include page="/Header.jsp"/>
+	<div class="container-fluid text-center">
+		<div class="row content">
+			<jsp:include page="/Leftside.jsp"/>
+			<div class="col-sm-8 text-left">
+			<form action='add.do' method='post' role="form"
 		enctype="multipart/form-data">
-		<h1>새 글</h1>
+		<h1>Video Upload</h1>
 		<div class="container">
-			
 			<div class="form-group has-warning">
-				<label for="usr">제목 :</label> 
+				<label for="usr">Title :</label> 
 				<input type="text" class="form-control" name="title">
 			</div>
-			
 			<div class="form-group has-success">
-				<label for="pwd">내용 :</label>
-				<textarea class="form-control" rows="5" name='content'
-					placeholder="상세계획을 입력하세요."></textarea>
+				<label for="pwd">Contents :</label>
+				<textarea class="form-control" rows="5" name='content'></textarea>
 			</div>
-			
 			<div class="form-group has-primary">
-				<label for="file">동영상:</label> 
-				<input type="file" class="form-control" name="video">
+				<label for="file">Video :</label> 
+				<input type="file" class="form-control" name="videofile">
 			</div>
-
-
 		</div>
-
-
 		<p>
 			<button type='submit' class="button button3">등록</button>
 		</p>
 
 	</form>
+			</div>
+
+		</div>
+	</div>
 
 	<footer class="container-fluid text-center">
 		<jsp:include page="/Copyright.jsp" />
 	</footer>
+
 </body>
 </html>

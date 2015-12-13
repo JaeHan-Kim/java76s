@@ -18,8 +18,8 @@ namespace: SQL문을 분류하는 용도로 사용하는 그룹명.
   </select>
   
   <insert id="insert" parameterType="users">
-		insert into users(email,name,photo,password)
-    values(#{email},#{name},#{photo},sha1(#{password}))
+		insert into users(email,name,photo,password,nickname)
+    values(#{email},#{name},#{photo},sha1(#{password}),#{nickname})
 	</insert>
 	
 	<delete id="delete" parameterType="string">

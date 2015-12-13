@@ -3,7 +3,8 @@
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"
     %>
-<p><address>
-** 이 웹 애플리케이션의 모든 권리는 자바 76기에 있습니다. &copy; Java76. **
-</address></p>
+<address>
+  <p>To indicate input that is typically entered via the keyboard, use the kbd element:</p>
+  <p>Use <kbd>ctrl + p</kbd> to open the Print dialog box.</p>
+</address>
     

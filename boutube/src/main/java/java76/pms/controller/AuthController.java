@@ -34,8 +34,6 @@ public class AuthController {
 			HttpServletResponse response,
 			HttpSession session) {
   	
-  	System.out.println(email);
-  	System.out.println(password);
     Cookie emailCookie = null;
     if (saveEmail != null) { // 이메일 저장을 체크했으면,
       emailCookie = new Cookie("email", email);
@@ -57,7 +55,7 @@ public class AuthController {
       return "auth/LoginFail"; 
     }
    session.setAttribute("loginUser", user);
-		return "redirect:../contents/list.do";
+		return "redirect:../contents/main.do";
 	}
 
   @RequestMapping(value="join", method=RequestMethod.GET)
@@ -69,6 +67,6 @@ public class AuthController {
 	public String logout(HttpSession session) {
   	
   	session.invalidate();
-  	return "redirect:login.do";
+  	return "redirect:../contents/main.do";
   }
 }
