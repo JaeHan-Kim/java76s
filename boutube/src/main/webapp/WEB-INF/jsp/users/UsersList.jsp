@@ -162,7 +162,7 @@ footer {
 
 #main_icon {
 	float: right;
-	padding-right: 65px;
+	padding-right: 35px;
 	padding-top: 20px;
 }
 

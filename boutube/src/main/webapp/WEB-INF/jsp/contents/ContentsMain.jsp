@@ -162,7 +162,7 @@ footer {
 
 #main_icon {
 	float: right;
-	padding-right: 65px;
+	padding-right: 35px;
 	padding-top: 20px;
 }
 
@@ -212,25 +212,22 @@ footer {
 
 				<div id="sidebar-wrapper">
 					<ul id="sidebar_menu" class="sidebar-nav">
-						<li class="sidebar-brand"><a id="menu-toggle" href="#">Menu</a></li>
-					</ul>
-					<ul class="sidebar-nav" id="sidebar">
-						<li><a>link1</a></li>
-						<li><a>link2</a></li>
+						<li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span
+								id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
+						<ul class="sidebar-nav" id="sidebar">
+						</ul>
 					</ul>
 				</div>
 				<!-- Page content -->
-
-				<table>
+				<table align="center">
 					<c:forEach var="content" items="${contents}">
-						<td><a href="detail.do?cno=${content.cno}">
-						<video width="280" height="200" controls>
-								<source src="../video/${content.video}" type="video/mp4">
-							</video>
-							<p>${content.title}<br>
-							 조회수 ${content.views} 
-							 </p></a>
-							 </td>
+						<td style="padding-right: 50px"><a
+							href="detail.do?cno=${content.cno}"> <video width="280"
+									height="200" controls>
+									<source src="../video/${content.video}" type="video/mp4">
+								</video>
+								<p>${content.title}<br> 조회수 ${content.views}
+								</p></a></td>
 					</c:forEach>
 				</table>
 				<form action="main.do" method='get' class="form">

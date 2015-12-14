@@ -17,12 +17,12 @@
 			<ul class="nav navbar-nav">
 				<li>  </li>
 				<li>
-					<c:if test="${not empty loginUser && loginUser.uno == 1}">
+					<c:if test="${not empty loginUser && loginUser.auth == 1}">
 					<a href="${pageContext.request.contextPath}/users/list.do"> 
 					${loginUser.name}님
 					</a>
 					</c:if> 
-					<c:if test="${not empty loginUser && loginUser.uno != 1}">
+					<c:if test="${not empty loginUser && loginUser.auth != 1}">
 					<a href="${pageContext.request.contextPath}/users/detail.do"> 
 					${loginUser.name}님
 					</a>
@@ -32,7 +32,7 @@
 				<input type="hidden" id='loginUsername' name='loginUsername' value='${loginUser.name}'>
 					<a id="upload" href="" onclick="message()" >Upload</a>
 				</li>
-				<li><a href="#">Contact</a></li>
+				
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li>

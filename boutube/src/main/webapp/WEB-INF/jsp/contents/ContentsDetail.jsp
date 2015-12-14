@@ -214,15 +214,12 @@ footer {
 					<ul id="sidebar_menu" class="sidebar-nav">
 						<li class="sidebar-brand"><a id="menu-toggle" href="#">Menu</a></li>
 					</ul>
-					<ul class="sidebar-nav" id="sidebar">
-						<li><a>link1</a></li>
-						<li><a>link2</a></li>
-					</ul>
 				</div>
 				<!-- Page content -->
 
-	<c:if test="${not empty contents}">
+					<c:if test="${not empty contents}">
 		<div class="form-style-8">
+		<form id='form1' action='update.do' method='post' enctype="multipart/form-data">
 			<table>
 				<tr>
 					<video width="960" height="500" controls>
@@ -230,19 +227,35 @@ footer {
 							</video>
 				</tr>	
 				<tr>
-					<td><input type='hidden' name='title' value='  ${contents.title}'>
-						<h1>${contents.title}</h1>
+					<td><input type='hidden' name='uno' value='  ${contents.contents_uno}'>
+						<h1><input type='text' name='cno' value=' ${contents.title}'></h1>
 					</td>
 									</tr>
 					<tr>
 					<td>
-					<p>${contents.content}</p>
+					<p><textarea class="form-control" rows="5" name='content'value="${contents.content}"></textarea></p>
 					</td>
 					<td align="right">
 					<p>${contents.views}, ${contents.cre_dt}
 					</td>
 				</tr>
 			</table>
+					<p>
+			<br>
+				<button name="update" type="submit" class="btn btn-info" class="btn btn-primary btn-md">변경</button>
+				<a id='gohome' href='../contents/main.do' class="btn btn-info" class="btn btn-primary btn-md" role="button">목록</a>
+				<a id='aDelete' href='delete.do?uno=${users.uno}' onclick='deleteBoard()'class="btn btn-info" class="btn btn-primary btn-md" role="button">삭제</a>
+			</p>
+		</form>
+		<script>
+			function deleteBoard() {
+				// 암호 텍스트 상자에 입력된 내용을 가져온다.
+
+				// a 태그의 href 값을 암호 파라미터가 붙은 값으로 변경한다. 
+				document.getElementById('aDelete').href = href;
+			}
+		</script>
+			<p></p>
 		</div>
 	</c:if>
 				<footer class="container-fluid text-center">
@@ -252,6 +265,7 @@ footer {
 			</div>
 		</div>
 	</div>
+
 
 	<!-- ----------------------------------- -->
 	<script>

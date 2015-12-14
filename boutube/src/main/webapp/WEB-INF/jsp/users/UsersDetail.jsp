@@ -164,7 +164,7 @@ footer {
 
 #main_icon {
 	float: right;
-	padding-right: 65px;
+	padding-right: 35px;
 	padding-top: 20px;
 }
 
@@ -217,8 +217,6 @@ footer {
 						<li class="sidebar-brand"><a id="menu-toggle" href="#">Menu</a></li>
 					</ul>
 					<ul class="sidebar-nav" id="sidebar">
-						<li><a>link1</a></li>
-						<li><a>link2</a></li>
 					</ul>
 				</div>
 	
