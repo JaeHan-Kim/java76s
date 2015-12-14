@@ -136,13 +136,13 @@ public class ContentsController {
 
 	@RequestMapping("delete")
 	public String delete(
-			int no,
-			String password,
+			int uno,
+			int auth,
 			Model model) throws Exception {
 
 		HashMap<String, Object> paramMap = new HashMap<>();
-		paramMap.put("no", no);
-		paramMap.put("password", password);
+		paramMap.put("uno", uno);
+		paramMap.put("auth", auth);
 
 		if (contentsDao.delete(paramMap) <= 0) {
 			model.addAttribute("errorCode", "401");

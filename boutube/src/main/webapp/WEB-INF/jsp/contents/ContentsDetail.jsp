@@ -162,7 +162,7 @@ footer {
 
 #main_icon {
 	float: right;
-	padding-right: 65px;
+	padding-right: 35px;
 	padding-top: 20px;
 }
 
@@ -212,7 +212,10 @@ footer {
 
 				<div id="sidebar-wrapper">
 					<ul id="sidebar_menu" class="sidebar-nav">
-						<li class="sidebar-brand"><a id="menu-toggle" href="#">Menu</a></li>
+						<li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span
+								id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
+						<ul class="sidebar-nav" id="sidebar">
+						</ul>
 					</ul>
 				</div>
 				<!-- Page content -->
@@ -227,13 +230,15 @@ footer {
 							</video>
 				</tr>	
 				<tr>
-					<td><input type='hidden' name='uno' value='  ${contents.contents_uno}'>
-						<h1><input type='text' name='cno' value=' ${contents.title}'></h1>
+					<td>
+					<input type='hidden' id='uno' value='${contents.contents_uno}'>
+					<input type='hidden' id='auth' value='${loginUser.auth}'>
+						<h1>${contents.title}</h1>
 					</td>
 									</tr>
 					<tr>
 					<td>
-					<p><textarea class="form-control" rows="5" name='content'value="${contents.content}"></textarea></p>
+					<p>${contents.content}</p>
 					</td>
 					<td align="right">
 					<p>${contents.views}, ${contents.cre_dt}
@@ -244,18 +249,24 @@ footer {
 			<br>
 				<button name="update" type="submit" class="btn btn-info" class="btn btn-primary btn-md">변경</button>
 				<a id='gohome' href='../contents/main.do' class="btn btn-info" class="btn btn-primary btn-md" role="button">목록</a>
-				<a id='aDelete' href='delete.do?uno=${users.uno}' onclick='deleteBoard()'class="btn btn-info" class="btn btn-primary btn-md" role="button">삭제</a>
+				<a id='aDelete' href='delete.do' class="btn btn-info" onclick='deleteBoard()' class="btn btn-primary btn-md" role="button">삭제</a>
 			</p>
 		</form>
 		<script>
 			function deleteBoard() {
 				// 암호 텍스트 상자에 입력된 내용을 가져온다.
+				var uno = document.getElementById('uno').value;
+				var auth = document.getElementById('auth').value;
+				alert(uno);
+				alert(auth);
+				// a 태그의 href 값을 가져와서 "&password=암호" 문자열을 붙인다.
+				var href = document.getElementById('aDelete').href
+						+ "?uno=" + uno + "&auth=" + auth;
 
 				// a 태그의 href 값을 암호 파라미터가 붙은 값으로 변경한다. 
-				document.getElementById('aDelete').href = href;
+			document.getElementById('aDelete').href = href;
 			}
 		</script>
-			<p></p>
 		</div>
 	</c:if>
 				<footer class="container-fluid text-center">

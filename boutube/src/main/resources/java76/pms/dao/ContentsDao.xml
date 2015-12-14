@@ -76,7 +76,8 @@ namespace: SQL문을 분류하는 용도로 사용하는 그룹명.
       cre_dt,
       views,
       video,
-      content
+      content,
+      contents_uno
     from contents
     where cno=#{cno}
   </select>
