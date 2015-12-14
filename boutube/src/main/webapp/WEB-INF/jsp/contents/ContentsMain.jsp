@@ -223,7 +223,7 @@ footer {
 					<c:forEach var="content" items="${contents}">
 						<td style="padding-right: 50px"><a
 							href="detail.do?cno=${content.cno}"> <video width="280"
-									height="200" controls>
+									height="200">
 									<source src="../video/${content.video}" type="video/mp4">
 								</video>
 								<p>${content.title}<br> 조회수 ${content.views}

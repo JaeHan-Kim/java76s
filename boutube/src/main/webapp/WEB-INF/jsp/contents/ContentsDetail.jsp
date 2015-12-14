@@ -247,6 +247,7 @@ footer {
 			</table>
 					<p>
 			<br>
+			
 				<button name="update" type="submit" class="btn btn-info" class="btn btn-primary btn-md">변경</button>
 				<a id='gohome' href='../contents/main.do' class="btn btn-info" class="btn btn-primary btn-md" role="button">목록</a>
 				<a id='aDelete' href='delete.do' class="btn btn-info" onclick='deleteBoard()' class="btn btn-primary btn-md" role="button">삭제</a>

@@ -133,7 +133,7 @@
 									<div class="form-group">
 										<label for="exampleInputEmail1">Nick name</label> <input
 											type="text" class="form-control" name="nickname"
-											value"" placeholder="Enter email">
+											value"" placeholder="Enter Nick Name">
 									</div>
 									<div class="form-group">
 										<label for="exampleInputPassword1">Create Password</label> <input
@@ -183,8 +183,8 @@ function message(){
 	
 	var message = document.getElementById('loginUsername').value;
 	if (message =="") {
-	alert("로그인 후에 이용 부탁드립니다.");
-	var href = "../contents/main.do";
+		alert("로그인 후에 이용 부탁드립니다.");
+		var href = "../contents/main.do";
 	} else {
 		var href = "../contents/add.do";
 	}

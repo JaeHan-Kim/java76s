@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>회원 관리</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -219,8 +219,8 @@ footer {
 					</ul>
 				</div>
 <div class="container">
-  <h2>Basic Table</h2>
-  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>            
+  <h2>회원관리</h2>
+  <p>가입된 회원들의 목록이 출력됩니다. </p>            
   <table class="table">
     <thead>
       <tr>

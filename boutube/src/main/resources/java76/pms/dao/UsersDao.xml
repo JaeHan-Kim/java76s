@@ -8,7 +8,7 @@ namespace: SQL문을 분류하는 용도로 사용하는 그룹명.
  -->
 <mapper namespace="java76.pms.dao.UsersDao">
 	<sql id="select_inc">
-		select uno,name, email, photo
+		select uno,name, email, photo, auth
 	</sql>
   <select id="selectList" resultType="users"
   				parameterType="map">
